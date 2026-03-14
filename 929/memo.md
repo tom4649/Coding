@@ -12,3 +12,7 @@
   - 真似してかいた（sol4.py）
     - https://github.com/hayashi-ay/leetcode/pull/25/changes
   - 正規表現:　[https://docs.python.org/ja/3/library/re.html](https://docs.python.org/ja/3/library/re.html)
+- https://github.com/mamo3gr/arai60/blob/main/929_unique-email-addresses/memo.md
+  - 「canonicalize なるほど。ChatGPT曰く、normalize よりも「仕様の決まっている正解にまとめる」ニュアンスが強いらしい。」
+  - str partirionというメソッドがあるらしい
+  - 二分割したい場合にはこちらの方が速い
