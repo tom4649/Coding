@@ -21,4 +21,4 @@ class Solution:
                 if child is None:
                     continue
                 que.append((depth + 1, child))
-        raise ValueError
+        raise RuntimeError("unreachable")
