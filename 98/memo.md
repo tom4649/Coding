@@ -1,4 +1,5 @@
 # 98. Validate Binary Search Tree
+[リンク](https://leetcode.com/problems/validate-binary-search-tree/submissions/1952536263/)
 
 - 再帰 dfsで書いた: sol1_dfs_recursion.py
 - 色々な解法: https://github.com/mamo3gr/arai60/blob/98_validate-binary-search-tree/98_validate-binary-search-tree/memo.md
