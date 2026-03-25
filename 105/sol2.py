@@ -5,6 +5,7 @@ from typing import List, Optional
 try:
     TreeNode  # type: ignore[name-defined]
 except NameError:
+
     class TreeNode:
         def __init__(self, val=0, left=None, right=None):
             self.val = val
@@ -21,7 +22,9 @@ class Solution:
         for i, val in enumerate(inorder):
             inorder_val_to_idx[val] = i
 
-        def buildTree_w_index(pre_left: int, in_left: int, num_children: int) -> Optional[TreeNode]:
+        def buildTree_w_index(
+            pre_left: int, in_left: int, num_children: int
+        ) -> Optional[TreeNode]:
             if num_children <= 0:
                 return None
             root = TreeNode(preorder[pre_left])
