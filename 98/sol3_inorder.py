@@ -14,9 +14,7 @@ class Solution:
         frontiers = []
 
         def push_it_and_left_children(node):
-            if node is None:
-                return
-            while node.left is not None:
+            while node is not None:
                 frontiers.append(node)
                 node = node.left
 
@@ -27,6 +25,5 @@ class Solution:
             if min_value >= node.val:
                 return False
             min_value = node.val
-            if node.right is not None:
-                push_it_and_left_children(node.right)
+            push_it_and_left_children(node.right)
         return True
