@@ -11,17 +11,17 @@ class TreeNode:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        frontiers = []
+        frontier = []
 
         def push_it_and_left_children(node):
             while node is not None:
-                frontiers.append(node)
+                frontier.append(node)
                 node = node.left
 
         push_it_and_left_children(root)
         min_value = -float("inf")
-        while frontiers:
-            node = frontiers.pop()
+        while frontier:
+            node = frontier.pop()
             if min_value >= node.val:
                 return False
             min_value = node.val

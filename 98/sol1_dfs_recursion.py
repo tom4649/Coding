@@ -11,15 +11,13 @@ class TreeNode:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def isValidBST_with_range(node, lower_bound, upper_bound):
+        def isValidBST_with_range(node, must_be_greater_than, must_be_less_than):
             if node is None:
                 return True
-            if node.val <= lower_bound or node.val >= upper_bound:
+            if node.val <= must_be_greater_than or node.val >= must_be_less_than:
                 return False
             return isValidBST_with_range(
-                node.left, lower_bound, min(upper_bound, node.val)
-            ) and isValidBST_with_range(
-                node.right, max(lower_bound, node.val), upper_bound
-            )
+                node.left, must_be_greater_than, node.val
+            ) and isValidBST_with_range(node.right, node.val, must_be_less_than)
 
         return isValidBST_with_range(root, -float("inf"), float("inf"))

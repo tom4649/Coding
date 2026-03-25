@@ -14,13 +14,14 @@ class Solution:
         if root is None:
             return True
 
-        frontiers = [(root, -float("inf"), float("inf"))]
-        while frontiers:
-            node, lower_bound, upper_bound = frontiers.pop()
-            if not lower_bound < node.val < upper_bound:
+        frontier = [(root, -float("inf"), float("inf"))]
+        while frontier:
+            node, must_be_greater_than, must_be_less_than = frontier.pop()
+            if not must_be_greater_than < node.val < must_be_less_than:
                 return False
             if node.left is not None:
-                frontiers.append((node.left, lower_bound, node.val))
+                frontier.append((node.left, must_be_greater_than, node.val))
             if node.right is not None:
-                frontiers.append((node.right, node.val, upper_bound))
+                frontier.append((node.right, node.val, must_be_less_than))
+
         return True
