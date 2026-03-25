@@ -11,14 +11,14 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
-        que = deque()
-        que.append((1, root))
-        while que:
-            depth, node = que.popleft()
+        frontier = deque()
+        frontier.append((1, root))
+        while frontier:
+            depth, node = frontier.popleft()
             if node.right is None and node.left is None:
                 return depth
-            for child in [node.right, node.left]:
+            for child in (node.left, node.right):
                 if child is None:
                     continue
-                que.append((depth + 1, child))
+                frontier.append((depth + 1, child))
         raise RuntimeError("unreachable")

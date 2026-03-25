@@ -1,4 +1,4 @@
-from collections import defaultdict, deque
+from collections import deque
 
 
 # Definition for a binary tree node.
@@ -9,23 +9,28 @@ from collections import defaultdict, deque
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        node_to_depth = defaultdict(int)
-        visited_nodes = set()
-        que = deque()
-        que.append((root, False))
-        while que:
-            node, is_visited = que.pop()
+        if root is None:
+            return 0
+        node_to_depth = {}
+        frontier = deque()
+        frontier.append((root, False))
+        while frontier:
+            node, is_visited = frontier.pop()
             if node is None:
                 continue
-            if is_visited:
-                depth_l = node_to_depth.get(node.left, 0)
-                depth_r = node_to_depth.get(node.right, 0)
-                if depth_l == 0 or depth_r == 0:
-                    node_to_depth[node] = max(depth_l, depth_r) + 1
-                else:
-                    node_to_depth[node] = min(depth_l, depth_r) + 1
+            if not is_visited:
+                frontier.append((node, True))
+                frontier.append((node.left, False))
+                frontier.append((node.right, False))
+                continue
+            depth_l = node_to_depth.get(node.left, None)
+            depth_r = node_to_depth.get(node.right, None)
+            if depth_l is None and depth_r is None:
+                node_to_depth[node] = 1
+            elif depth_l is None:
+                node_to_depth[node] = depth_r + 1
+            elif depth_r is None:
+                node_to_depth[node] = depth_l + 1
             else:
-                que.append((node, True))
-                que.append((node.left, False))
-                que.append((node.right, False))
+                node_to_depth[node] = min(depth_l, depth_r) + 1
         return node_to_depth[root]

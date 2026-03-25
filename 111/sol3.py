@@ -6,22 +6,19 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        min_depth = float("inf")
         if root is None:
             return 0
+        min_depth = float("inf")
 
-        def dfs(node, depth):
+        def traverse(node, depth):
             nonlocal min_depth
-            if node is None:
-                return
             if node.left is None and node.right is None:
                 min_depth = min(min_depth, depth)
                 return
             for child in (node.left, node.right):
                 if child is None:
                     continue
-                dfs(child, depth + 1)
-            return
+                traverse(child, depth + 1)
 
-        dfs(root, 1)
+        traverse(root, 1)
         return min_depth
