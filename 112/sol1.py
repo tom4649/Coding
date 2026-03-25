@@ -13,7 +13,9 @@ class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if root is None:
             return False
-        diff = targetSum - root.val
+        remaining = targetSum - root.val
         if self.is_leaf(root):
-            return diff == 0
-        return self.hasPathSum(root.left, diff) or self.hasPathSum(root.right, diff)
+            return remaining == 0
+        return self.hasPathSum(root.left, remaining) or self.hasPathSum(
+            root.right, remaining
+        )
