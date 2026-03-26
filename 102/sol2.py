@@ -10,7 +10,7 @@ class Solution:
     def levelOrder(self, root: Optional["TreeNode"]) -> List[List[int]]:
         level_order = []
 
-        def add_value_by_level(node, level):
+        def append_value_by_level(node, level):
             if node is None:
                 return
 
@@ -18,8 +18,8 @@ class Solution:
                 level_order.append([])
             level_order[level].append(node.val)
 
-            add_value_by_level(node.left, level + 1)
-            add_value_by_level(node.right, level + 1)
+            append_value_by_level(node.left, level + 1)
+            append_value_by_level(node.right, level + 1)
 
-        add_value_by_level(root, 0)
+        append_value_by_level(root, 0)
         return level_order

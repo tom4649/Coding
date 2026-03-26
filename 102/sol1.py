@@ -1,3 +1,6 @@
+from itertools import zip_longest
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,15 +13,9 @@ class Solution:
             return []
         left_level_order = self.levelOrder(root.left)
         right_level_order = self.levelOrder(root.right)
-        if len(left_level_order) < len(right_level_order):
-            left_level_order.extend(
-                [[] for _ in range(len(right_level_order) - len(left_level_order))]
-            )
-        else:
-            right_level_order.extend(
-                [[] for _ in range(len(left_level_order) - len(right_level_order))]
-            )
         merged_level_order = [[root.val]]
-        for i in range(len(left_level_order)):
-            merged_level_order.append(left_level_order[i] + right_level_order[i])
+        for left, right in zip_longest(
+            left_level_order, right_level_order, fillvalue=[]
+        ):
+            merged_level_order.append(left + right)
         return merged_level_order

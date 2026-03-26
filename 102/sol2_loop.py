@@ -10,16 +10,16 @@ from collections import deque
 
 class Solution:
     def levelOrder(self, root: Optional["TreeNode"]) -> List[List[int]]:
-        level_order = []
         if root is None:
-            return level_order
-        children_pushed = deque([(0, root)])
+            return []
+        level_order = []
+        node_to_traverse = deque([(0, root)])
 
-        while children_pushed:
-            level, node = children_pushed.pop()
+        while node_to_traverse:
+            level, node = node_to_traverse.pop()
             for child in (node.right, node.left):
                 if child is not None:
-                    children_pushed.append((level + 1, child))
+                    node_to_traverse.append((level + 1, child))
             while len(level_order) <= level:
                 level_order.append([])
             level_order[level].append(node.val)

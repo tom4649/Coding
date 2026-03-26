@@ -13,15 +13,14 @@ class Solution:
         level_order = []
         if root is None:
             return level_order
-        queue = deque()
-        queue.append(root)
+        queue = deque([root])
         while queue:
             values_by_level = []
             level_size = len(queue)
             for _ in range(level_size):
                 node = queue.popleft()
                 values_by_level.append(node.val)
-                for child in [node.left, node.right]:
+                for child in (node.left, node.right):
                     if child is not None:
                         queue.append(child)
             level_order.append(values_by_level)
