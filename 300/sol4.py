@@ -1,0 +1,44 @@
+from bisect import bisect_left
+from typing import List
+
+
+class BITMax:
+    def __init__(self, size: int):
+        self.n = size
+        self.bit = [0] * (size + 1)
+
+    def update(self, index: int, value: int) -> None:
+        while index <= self.n:
+            if value > self.bit[index]:
+                self.bit[index] = value
+            index += index & -index
+
+    def query(self, index: int) -> int:
+        result = 0
+        while index > 0:
+            if self.bit[index] > result:
+                result = self.bit[index]
+            index -= index & -index
+        return result
+
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        coords = sorted(set(nums))
+
+        def to_rank(x: int) -> int:
+            return bisect_left(coords, x) + 1
+
+        bit = BITMax(len(coords))
+        ans = 0
+        for x in nums:
+            r = to_rank(x)
+            best_prev = bit.query(r - 1)
+            cur = best_prev + 1
+            bit.update(r, cur)
+            if cur > ans:
+                ans = cur
+        return ans
