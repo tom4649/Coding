@@ -37,5 +37,8 @@
 - クイックソートで長い方を末尾再帰最適化するのもスタックオーバーフローを防ぐため
     - https://nuc.hatenadiary.org/entry/2021/03/31#:~:text=%E7%9F%AD%E3%81%84%E6%96%B9%E3%81%8B%E3%82%89%E5%86%8D%E5%B8%B0%E3%81%97%E3%81%A6%E3%80%81%E9%95%B7%E3%81%84%E6%96%B9%E3%81%AF%E6%9C%AB%E5%B0%BE%E5%86%8D%E5%B8%B0%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8
 
-
-
+- tupleとlistのベンチマーク： tupleの方がややはやい
+n=200000 number=200 repeat=7 (best of repeat)
+list : 1.694295 s
+tuple: 1.462984 s
+tuple/list: 0.8635x
