@@ -41,4 +41,9 @@ https://github.com/mamo3gr/arai60/blob/300_longest-increasing-subsequence/300_lo
 - 自力ではかけない
 
 - BITを使った解法: LLMに書かせたが自分では読んでいない。(sol4)
-    - この復習から次回
+    - https://algo-logic.info/binary-indexed-tree/
+    - 和の区間を最初からに限定することで、メモリと計算効率を上昇
+    - bit演算で親や子への移動が可能
+    - index & -index = lowbit[index]
+    - これを足すことで親に移る
+    - 自分では書けない
