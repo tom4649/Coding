@@ -5,10 +5,10 @@ class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         tails = []
         for n in nums:
-            lis_if_tail_is_n = bisect_left(tails, n) + 1
-            if lis_if_tail_is_n > len(tails):
+            pos_insert_n = bisect_left(tails, n)
+            if pos_insert_n >= len(tails):
                 tails.append(n)
                 continue
-            tails[lis_if_tail_is_n - 1] = n
+            tails[pos_insert_n] = n
 
         return len(tails)
