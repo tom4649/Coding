@@ -8,6 +8,6 @@ class Solution:
             total *= i
 
         for i in range(1, n):
-            total /= i
+            total //= i
 
-        return int(total)
+        return total

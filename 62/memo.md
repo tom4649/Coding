@@ -1,7 +1,7 @@
 # 62. Unique Paths
 
 - sol1.py
-    - 愚直に解いた。高校数学の問題として捉えコーディングの要素は考えていない
+    - 高校数学の問題として捉えコーディングの要素は考えていない
     - mとnの大小関係を考慮した
     - 計算量 O(min(m, n))
 - https://github.com/mamo3gr/arai60/blob/62_unique-paths/62_unique-paths/step1_dp.py
