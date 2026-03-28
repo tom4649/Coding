@@ -12,18 +12,18 @@ class SegTree:
     def _to_leaf_index(self, index):
         return index + self.offset - 1
 
-    def update(self, rank, value):
-        k = self._to_leaf_index(rank)
+    def update(self, index, value):
+        k = self._to_leaf_index(index)
         self.data[k] = max(self.data[k], value)
         k //= 2
         while k >= 1:
             self.data[k] = max(self.data[2 * k], self.data[2 * k + 1])
             k //= 2
 
-    def query(self, first_rank, last_rank):
-        if first_rank > last_rank:
+    def query(self, first_index, last_index):
+        if first_index > last_index:
             return 0
-        l, r = self._to_leaf_index(first_rank), self._to_leaf_index(last_rank)
+        l, r = self._to_leaf_index(first_index), self._to_leaf_index(last_index)
         result = 0
         while l <= r:
             if l % 2 == 1:
