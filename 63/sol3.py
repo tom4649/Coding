@@ -15,14 +15,14 @@ class Solution:
                     unique_paths_per_row[col] = 0
                     continue
 
-                ways = unique_paths_per_row[col]
-                if ways == 0:
+                paths = unique_paths_per_row[col]
+                if paths == 0:
                     continue
 
-                if col + 1 < n_col and not obstacleGrid[row][col + 1]:
-                    unique_paths_per_row[col + 1] += ways
-                if row + 1 < n_row and not obstacleGrid[row + 1][col]:
-                    unique_paths_next_row[col] += ways
+                if col + 1 < n_col:
+                    unique_paths_per_row[col + 1] += paths
+                if row + 1 < n_row:
+                    unique_paths_next_row[col] += paths
 
             if row + 1 < n_row:
                 unique_paths_per_row = unique_paths_next_row
