@@ -1,5 +1,8 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        if not nums:
+            raise ValueError("The input list is empty")
+
         if len(nums) < 2:
             return max(nums)
 

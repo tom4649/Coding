@@ -3,6 +3,9 @@ from functools import cache
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        if not nums:
+            raise ValueError("The input list is empty")
+
         @cache
         def rob_helper(idx):
             if idx < 2:
