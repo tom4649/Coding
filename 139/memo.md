@@ -50,20 +50,20 @@ https://github.com/mamo3gr/arai60/blob/139_word-break/139_word-break/step3_tuple
 知らなかった。直感的にわかりやすい。
 
 
-計算量
-n = |s|, m = len(wordDict), l = max([len(word) for word in wordDoct])とする
+## 計算量
+- n = |s|, m = len(wordDict), l = max([len(word) for word in wordDoct])とする
 
-sol1.py
-時間 O(nml): can_breakはメモ化しているので高々O(n)回呼び出される、それぞれの関数内でwordDict内全ての文字列比較をするので O(ml)
-空間 O(n): 再帰スタックとメモ化
+### sol1.py
+- 時間 O(nml): can_breakはメモ化しているので高々O(n)回呼び出される、それぞれの関数内でwordDict内全ての文字列比較をするので O(ml)
+- 空間 O(n): 再帰スタックとメモ化
 
-sol2.py
-時間 O(nml): (visitedを使っているので)各単語の訪問回数は高々一回 O(n)、それぞれwordDictを全走査O(m)、文字列比較 O(l)
-空間 O(n)：visited, frontierの管理
+### sol2.py
+- 時間 O(nml): (visitedを使っているので)各単語の訪問回数は高々一回 O(n)、それぞれwordDictを全走査O(m)、文字列比較 O(l)
+- 空間 O(n)：visited, frontierの管理
 
-sol3.py
-時間 O((m+n)l): Trie木の構築 O(ml)、can_reachが全てTrueになった場合の探索 O(nl)
-空間 O(ml+n): Trie木 O(ml)、can_reach O(n)
+### sol3.py
+- 時間 O((m+n)l): Trie木の構築 O(ml)、can_reachが全てTrueになった場合の探索 O(nl)
+- 空間 O(ml+n): Trie木 O(ml)、can_reach O(n)
 
 sol2.pyは位置それぞれで文字列比較を行う分時間計算量が大きい。
 
