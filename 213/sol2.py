@@ -8,7 +8,7 @@ class Solution:
             return max(nums)
 
         def rob_linearly(sequence):
-            def visit_next(state, money):
+            def visit_next(state: tuple[int, int], money: int) -> tuple[int, int]:
                 max_with_last, max_without_last = state
                 next_max_without_last = max_with_last
                 max_with_last = max(max_with_last, max_without_last + money)
