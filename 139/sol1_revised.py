@@ -6,7 +6,8 @@ class Solution:
         len_target = len(s)
 
         @functools.cache
-        def can_break(i) -> bool:
+        def can_break(i: int) -> bool:
+            """returns whether s[i:] can be broken."""
             if i == len_target:
                 return True
             for word in wordDict:
