@@ -84,6 +84,35 @@ i < left→ flag_nums[i] == False
 i >= right →　flag_nums[i] == True
 終了時 left = rightでは right: flag_nums[i] == Trueを満たす最小のi が保証される
 
+---
+## コメントをいただいて追記：
+
+### ループ不変式:
+
+i < left -> nums[i] <= target (1)
+
+&& j >= right -> nums[j] > target (2)
+
+
+### 成り立つことの確認
+
+#### 初期化時: left=0, right=len(nums)
+i < left, j >= rightとなるi, jは存在しない。
+
+#### 維持: ある反復で成り立つと仮定して次の反復で成り立つことを示す。場合分け。
+- nums[middle] <= target の場合: numsがソートされているため left=middle+1とした場合、(1) は依然として成立
+- nums[middle] > target の場合 numsがソートされているため right=middle とした場合(2) は依然として成立
+
+#### 終了: left < rightがFalseとなる。更新式よりleft==rightである
+(1),(2)と合わせて、
+
+i<left -> nums[i] <= target && i >= left -> nums[i] > target
+
+これはleftがnums[i] > targetを満たす最小のiであることを意味する。
+
+
+---
+
 https://github.com/seal-azarashi/leetcode/pull/38
 
 しっかりと理解する必要があるな
