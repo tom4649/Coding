@@ -17,14 +17,19 @@ class Solution:
         minimum_index = left
 
         # Step 2: Find the target
-        left = 0  # (i - minimum_index) % len_nums < left  -> nums[i] < target
-        right = len_nums  # (i - minimum_index) % len_nums >= right -> nums[i] >= target
+        if nums[-1] < target:
+            left, right = (
+                0,
+                minimum_index,
+            )
+        else:
+            left, right = minimum_index, len_nums
+        # i < left  -> nums[i] < target
+        # i >= right -> nums[i] >= target
         while left < right:
             mid = left + (right - left) // 2
-            if nums[(mid + minimum_index) % len_nums] < target:
+            if nums[mid] < target:
                 left = mid + 1
             else:
                 right = mid
-
-        target_index = (left + minimum_index) % len_nums
-        return target_index if nums[target_index] == target else -1
+        return left if nums[left] == target else -1
