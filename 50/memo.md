@@ -52,4 +52,28 @@ bias = 2^{指数部のbit} -1
 この辺りの知識、頭から抜けてしまっているので復習したい
 
 
+追記：
+helper 関数を用いる場合を追記
+このhelper関数は末尾再帰最適化を行うことで真価が発揮される。
+しかし、pythonではこれが行われないらしく、追加の処理が必要になる
+(末尾再帰最適化が実装されていないこと)
+https://docs.python.org/3.15/whatsnew/3.14.html#whatsnew314-tail-call
 
+しかし、Pythonは末尾再帰最適化を実装しておらず、これにはTrampolineという手法を用いるのが良いらしい。
+自分で実装してみる
+https://note.com/_ikb_/n/nc67f3e541f20
+
+
+Geminiや記事を参考に自分なりに言語化すると、
+最初に末尾再帰関数が呼ばれるとfirstcall=Trueなのでwhile文に入る。
+nonlocalを使用しているため、tail_recursiveのlocal変数は全ての呼び出しで共通である。
+そこで次の関数が呼ばれるがすでにfirstcall=Falseになっているので、引数だけを更新してfuncを返し、すぐに終了する。
+これが続いて引数を更新し続け、最後に値が返ってwhileを抜ける。
+
+実際にスタックのメモリ使用量に差が出ることを確認できた。
+なお、実行時間はやや遅くなる
+
+functools.wrapper
+関数のメタデータを新しい関数に引き継ぐ
+
+https://docs.python.org/ja/3/library/functools.html#functools.update_wrapper
