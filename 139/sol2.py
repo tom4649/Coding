@@ -3,14 +3,14 @@ class Solution:
         frontier = [0]
         visited = {0}
         while frontier:
-            position = frontier.pop()
-            if position == len(s):
+            start_position = frontier.pop()
+            if start_position == len(s):
                 return True
             for word in wordDict:
-                new_position = position + len(word)
+                new_position = start_position + len(word)
                 if new_position in visited:
                     continue
-                if s[position:new_position] != word:
+                if s[start_position:new_position] != word:
                     continue
                 frontier.append(new_position)
                 visited.add(new_position)

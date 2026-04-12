@@ -15,9 +15,8 @@ class Solution:
             return True
 
         root = TrieNode()
-        max_len_of_wordDict = 0
+        max_len_of_wordDict = max(len(word) for word in wordDict)
         for word in wordDict:
-            max_len_of_wordDict = max(max_len_of_wordDict, len(w))
             node = root
             for ch in word:
                 node = node.children.setdefault(ch, TrieNode())
