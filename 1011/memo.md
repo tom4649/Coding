@@ -2,6 +2,8 @@
 
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
 
+TODO: 二分探索を自分で書く
+
 - capacityを指定すればそれが可能かはO(N)で判定できる
 - 上限をどのように定めるかが問題。単純にsum(weights)としたとき220ms、minを使ったとき119msとなった。
 - 問題のWeight上限を使う方法は正攻法なのだろうか
