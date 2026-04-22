@@ -1,7 +1,7 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         if n == 0:
-            return []
+            return [""]
 
         parentheses = []
         frontier = [("(", 1, 0)]
