@@ -5,14 +5,14 @@ class Solution:
         frontier = [(0, 0, [])]
 
         while frontier:
-            current_sum, seen, elments = frontier.pop()
+            current_sum, seen, elements = frontier.pop()
             for i in range(seen, len(sorted_candidates)):
                 next_sum = current_sum + sorted_candidates[i]
                 if next_sum == target:
-                    all_results.append(elments + [sorted_candidates[i]])
+                    all_results.append(elements + [sorted_candidates[i]])
                     break
                 if next_sum > target:
                     break
-                frontier.append((next_sum, i, elments + [sorted_candidates[i]]))
+                frontier.append((next_sum, i, elements + [sorted_candidates[i]]))
 
         return all_results
