@@ -45,3 +45,14 @@ https://github.com/olsen-blue/Arai60/pull/54#discussion_r2027288220
 
 これは面白い解法だ。なるほど、最初の左かっこに対応する右かっこの位置で場合分けをしている: sol3.py
 - メモ化再帰に直した
+
+### 追記
+sol2 と sol2_revisedを比較すると速さはそれほど変わらない、というかrevisedの方が少し遅かった（geminiに手伝ってもらいました）
+
+答えの本数だけlistからjoinでstrに毎回変換し、文字列の更新よりもオーバヘッドが大きいためだと考えられる
+
+-----------------------------------------------------------
+n= 8  number= 5  sol2:     8.40 ms  sol2_revised:    10.00 ms  (revised / sol2 = 1.190)
+n=10  number= 5  sol2:   103.18 ms  sol2_revised:   116.89 ms  (revised / sol2 = 1.133)
+n=12  number= 2  sol2:   520.99 ms  sol2_revised:   594.95 ms  (revised / sol2 = 1.142)
+n=13  number= 1  sol2:   933.25 ms  sol2_revised:  1076.60 ms  (revised / sol2 = 1.154)
