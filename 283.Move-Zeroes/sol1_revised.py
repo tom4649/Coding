@@ -20,7 +20,7 @@ class Solution:
             if scanning_index == len(nums):
                 return
 
-            while nums[first_zero_index] == 0 and scanning_index < len(nums):
+            while scanning_index < len(nums):
                 nums[scanning_index], nums[first_zero_index] = (
                     nums[first_zero_index],
                     nums[scanning_index],
