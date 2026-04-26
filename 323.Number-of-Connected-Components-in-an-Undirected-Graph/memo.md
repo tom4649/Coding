@@ -18,3 +18,16 @@ https://github.com/mamo3gr/arai60/blob/323_number-of-connected-components-in-an-
 
 DFSでも解けるのか
 自分でも書いてみる: sol3.py
+
+
+### 追記
+Union by RankとUnion by Sizeの区別が曖昧だった
+
+Rank: 木の高さの上界（経路圧縮後は実際の高さより大きくなることがある）
+Size: 集合の要素数
+
+Union by Sizeならunionのたびに相手のサイズを加える
+Union by Rankは等しい二つの集合をunionするときだけ+1
+
+https://en.wikipedia.org/wiki/Disjoint-set_data_structure#Union_by_size
+
