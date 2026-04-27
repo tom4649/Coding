@@ -1,5 +1,7 @@
 # 776. Split BST
 
+https://www.lintcode.com/problem/847/
+
 再帰で書いた: sol1.py
 特に詰まるところはなかった
 計算量: 時間 O(n) 空間 O(n)だが平衡ならばO(logn) (木の高さ)
