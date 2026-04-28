@@ -13,7 +13,7 @@ class Solution:
         end_times = []
         intervals = sorted(intervals, key=lambda x: x.start)
         for interval in intervals:
-            if end_times and end_times[0] < interval.start:
+            if end_times and end_times[0] <= interval.start:
                 heapq.heappop(end_times)
             heapq.heappush(end_times, interval.end)
         return len(end_times)
