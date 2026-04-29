@@ -18,3 +18,9 @@
     - `==`: `__eq__`でオブジェクトの等価性を比較する。
 
 </details>
+<summary>[83] Remove Duplicates from Sorted List</summary>
+
+- Linked Listの操作
+- 変数名には組み込み名と衝突する名前を使わない
+
+</details>
