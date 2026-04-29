@@ -42,3 +42,12 @@
 
 </details>
 
+<details>
+<summary>20. Valid Parentheses</summary>
+
+- PEP-8 と Google Style Guide では strings, lists, tuples は implicit で真偽判定
+- 副作用のある式を条件のところに書かない方が良いかもしれない。読む側が頭の中で実行順序を追う必要が出るため。e.g. `stack.pop()`
+
+</details>
+
+
