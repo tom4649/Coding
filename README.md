@@ -25,6 +25,7 @@
 
 </details>
 
+<details>
 <summary>82.Remove Duplicates from Sorted List II</summary>
 
 - 変数名の意味を考える
@@ -32,3 +33,12 @@
 - dummyを番兵として用いる方法は自然に解釈できる
 
 </details>
+
+
+<details>
+<summary>0002.Add Two Numbers</summary>
+
+- 多倍長整数の加算
+
+</details>
+
