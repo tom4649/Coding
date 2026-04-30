@@ -75,4 +75,13 @@
 
 </details>
 
+<details>
+<summary>98. Validate Binary Search Tree</summary>
+
+- 木の探索順（preorder, inorder, postorder）
+- 再帰とループの変換
+- ロジックの流暢さ
+
+</details>
+
 
