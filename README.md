@@ -9,3 +9,18 @@
 - `__eq__` が `True` なら、`__hash__` も等しくなければならない
 
 </details>
+<details>
+<summary>[0142] Linked List Cycle II</summary>
+
+- Floydの循環検出法（有名だが常識ではない）
+- `is`と`==`の違い: オブジェクトの同一性を比較する。同じインスタンスかどうか
+    - `is`: オブジェクトの同一性を比較する。同じインスタンスかどうかを`id()`で判定（CPythonではメモリアドレスとして実装されている）。
+    - `==`: `__eq__`でオブジェクトの等価性を比較する。
+
+</details>
+<summary>[83] Remove Duplicates from Sorted List</summary>
+
+- Linked Listの操作
+- 変数名には組み込み名と衝突する名前を使わない
+
+</details>
