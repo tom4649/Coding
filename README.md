@@ -18,6 +18,8 @@
     - `==`: `__eq__`でオブジェクトの等価性を比較する。
 
 </details>
+
+<details>
 <summary>83.Remove Duplicates from Sorted List</summary>
 
 - Linked Listの操作
@@ -53,9 +55,16 @@
 <details>
 <summary>206. Reverse Linked List</summary>
 
-- 一度の操作で行うポインタの付け替え
+- 一度の走査で行うポインタの付け替え
 
 </details>
+<details>
+<summary>703. Kth Largest Element in a Stream</summary>
 
+- heapqライブラリの使い方
+- マージソート、クイックソート、クイックセレクトの確認
+- ヒープの構築がO(n)であることが抜けていた
+
+</details>
 
 
