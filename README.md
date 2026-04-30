@@ -84,4 +84,12 @@
 
 </details>
 
+<details>
+<summary>373.Find K Pairs with Smallest Sums</summary>
+
+- 全組み合わせを作らず、次に小さくなりうる候補だけをヒープで管理する
+- 分からない場合には手作業で考える
+
+</details>
+
 
