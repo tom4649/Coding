@@ -16,3 +16,10 @@
 - stack dfs
     - https://github.com/mamo3gr/arai60/blob/98_validate-binary-search-tree/98_validate-binary-search-tree/step3.py
     - 書いてみる： sol2
+
+### 解き直し
+変数名やコードの綺麗さを除けば、dfsはスラスラとかけた
+
+inorderは書けなかった
+- 常に自分より左のsubtreeが処理済みであることを仮定する
+- BSTでは小さい値から走査していくことになる
