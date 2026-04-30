@@ -66,5 +66,13 @@
 - ヒープの構築がO(n)であることが抜けていた
 
 </details>
+<details>
+<summary>347. Top K Frequent Elements</summary>
+
+- ヒープの構築はO(n) (再)
+- クイックソートの実装
+- 一行で行う操作を増やしすぎない
+
+</details>
 
 
