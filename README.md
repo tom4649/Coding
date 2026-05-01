@@ -1,1 +1,160 @@
 # Coding
+
+<details>
+<summary>0141.Linked List Cycle</summary>
+
+- `set`を使った解法
+- `set`と`dict`がどちらもhashtableで値を格納している
+- そのためdictのkeyはhashableである必要がある
+- `__eq__` が `True` なら、`__hash__` も等しくなければならない
+
+</details>
+<details>
+<summary>0142.Linked List Cycle II</summary>
+
+- Floydの循環検出法（有名だが常識ではない）
+- `is`と`==`の違い: オブジェクトの同一性を比較する。同じインスタンスかどうか
+    - `is`: オブジェクトの同一性を比較する。同じインスタンスかどうかを`id()`で判定（CPythonではメモリアドレスとして実装されている）。
+    - `==`: `__eq__`でオブジェクトの等価性を比較する。
+
+</details>
+
+<details>
+<summary>83.Remove Duplicates from Sorted List</summary>
+
+- Linked Listの操作
+- 変数名には組み込み名と衝突する名前を使わない
+
+</details>
+
+<details>
+<summary>82.Remove Duplicates from Sorted List II</summary>
+
+- 変数名の意味を考える
+- currentの名前は情報量がない
+- dummyを番兵として用いる方法は自然に解釈できる
+
+</details>
+
+
+<details>
+<summary>0002.Add Two Numbers</summary>
+
+- 多倍長整数の加算
+
+</details>
+
+<details>
+<summary>20. Valid Parentheses</summary>
+
+- PEP-8 と Google Style Guide では strings, lists, tuples は implicit で真偽判定
+- 副作用のある式を条件のところに書かない方が良いかもしれない。読む側が頭の中で実行順序を追う必要が出るため。e.g. `stack.pop()`
+
+</details>
+
+<details>
+<summary>206. Reverse Linked List</summary>
+
+- 一度の走査で行うポインタの付け替え
+
+</details>
+<details>
+<summary>703. Kth Largest Element in a Stream</summary>
+
+- heapqライブラリの使い方
+- マージソート、クイックソート、クイックセレクトの確認
+- ヒープの構築がO(n)であることが抜けていた
+
+</details>
+<details>
+<summary>347. Top K Frequent Elements</summary>
+
+- ヒープの構築はO(n) (再)
+- クイックソートの実装
+- 一行で行う操作を増やしすぎない
+
+</details>
+
+<details>
+<summary>98. Validate Binary Search Tree</summary>
+
+- 木の探索順（preorder, inorder, postorder）
+- 再帰とループの変換
+- ロジックの流暢さ
+
+</details>
+
+<details>
+<summary>373.Find K Pairs with Smallest Sums</summary>
+
+- 全組み合わせを作らず、次に小さくなりうる候補だけをヒープで管理する
+- 分からない場合には手作業で考える
+
+</details>
+
+<details>
+<summary>1. Two Sum</summary>
+
+- Hashmapを使うと、必要な相手の値を平均O(1)で確認できるため、全探索のO(n^2)をO(n)に改善できる
+- Type HintsはPython3から導入され、Docstringの型指定が使われなくなった
+- 実装から時間計算量を見積もる時の目安
+    - C++： 約 1～10 億 (10^8~10^9) ステップ/秒、Python： 約 100 万～1000 万 (10^6~10^7) ステップ/秒
+
+</details>
+
+<details>
+<summary>49. Group Anagrams</summary>
+
+- 理論上は文字頻度を使う方が速いが、Pythonの組み込みsortはC実装で高速なので、入力サイズによってはsortedを使う方が実測で速いことがある
+- listはmutableでhashableではないため、dictのkeyにするにはtupleへ変換する必要がある
+
+</details>
+
+<details>
+<summary>349. Intersection of Two Arrays</summary>
+
+- setはhash tableで実装されており、構築は平均O(n)、membership checkは平均O(1)
+- 短い方をsetにすると、空間計算量をO(min(l1, l2))に抑えられる
+- 入力がソート済み、片方だけ巨大、メモリ制約が厳しいなど、追加条件によって適した解法は変わる
+- ソート済み配列同士なら、マージソートのmergeに近いtwo pointersでO(l1 + l2)
+- マージソート
+    - pros: 最悪計算量もO(n log n)で安定、stable sort、外部ソートに向く
+    - cons: 配列では追加メモリO(n)、コピーの定数倍が重い、実測ではquick sortより遅いことが多い
+
+
+</details>
+
+
+<details>
+<summary>929. Unique Email Addresses</summary>
+
+- `str.partition`: 区切り文字で「左、
+区切り文字、右」の3要素に分けるため、最初の1回だけ分割したい意図を表しやすい
+- 正規表現、有限ステートマシン、文字列操作の複数方針
+- Pythonの文字列はimmutableなので、ループ内での文字列連結は避け、必要ならlistにappendして最後に`"".join()`する
+
+</details>
+
+<details>
+<summary>387. First Unique Character in a String</summary>
+
+- 頻度を先に数えてから再走査する解法はシンプルで堅いが、文字列を2回見る
+- 文字が1回しか流れてこない設定では、現在ユニークな文字だけを順序付きで管理する発想が使える
+- `OrderedDict`は挿入順を保てるため、重複した文字を削除していけば先頭が最初のユニーク文字になる
+- `queue.Queue`はスレッド同期用の機能を持つため、単一スレッドのアルゴリズム用途では`collections.deque`の方が自然
+- `queue.Queue`には`peek`がないので、先頭を見ながら取り除く用途では`deque`の`q[0]`と`popleft()`が使いやすい
+- `OrderedDict`の順序管理は、dictに加えてdoubly-linked listを持つことで実現できる
+- doubly-linked listでは前後の参照を更新することで、ノード削除をO(1)で行える
+
+</details>
+
+<details>
+<summary>560. Subarray Sum Equals K</summary>
+
+- prefix sumの出現回数をhashmapで管理すると、全区間を列挙するO(n^2)ではなくO(n)で数えられる
+- 累積和配列を作って後から処理するより、走査しながら過去のprefix sumを数える方がシンプルに書ける
+- 和がKになる区間を列挙する問題に変えると、prefix sum同士の対応関係を理解しやすい
+- `defaultdict(int)`を使うと、存在しないprefix sumの出現回数を0として扱えて実装が素直になる
+- パフォーマンス不足はデータ量が増えたときに実行時間やメモリ使用量として現れるため、O(n^2)からO(n)への改善は実務でも効く
+
+</details>
