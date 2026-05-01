@@ -125,3 +125,13 @@
 </details>
 
 
+<details>
+<summary>929. Unique Email Addresses</summary>
+
+- `str.partition`: 区切り文字で「左、
+区切り文字、右」の3要素に分けるため、最初の1回だけ分割したい意図を表しやすい
+- 正規表現、有限ステートマシン、文字列操作の複数方針
+- Pythonの文字列はimmutableなので、ループ内での文字列連結は避け、必要ならlistにappendして最後に`"".join()`する
+
+</details>
+
