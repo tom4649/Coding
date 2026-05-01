@@ -110,4 +110,18 @@
 
 </details>
 
+<details>
+<summary>349. Intersection of Two Arrays</summary>
+
+- setはhash tableで実装されており、構築は平均O(n)、membership checkは平均O(1)
+- 短い方をsetにすると、空間計算量をO(min(l1, l2))に抑えられる
+- 入力がソート済み、片方だけ巨大、メモリ制約が厳しいなど、追加条件によって適した解法は変わる
+- ソート済み配列同士なら、マージソートのmergeに近いtwo pointersでO(l1 + l2)
+- マージソート
+    - pros: 最悪計算量もO(n log n)で安定、stable sort、外部ソートに向く
+    - cons: 配列では追加メモリO(n)、コピーの定数倍が重い、実測ではquick sortより遅いことが多い
+
+
+</details>
+
 
