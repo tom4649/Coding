@@ -75,4 +75,21 @@
 
 </details>
 
+<details>
+<summary>98. Validate Binary Search Tree</summary>
+
+- 木の探索順（preorder, inorder, postorder）
+- 再帰とループの変換
+- ロジックの流暢さ
+
+</details>
+
+<details>
+<summary>373.Find K Pairs with Smallest Sums</summary>
+
+- 全組み合わせを作らず、次に小さくなりうる候補だけをヒープで管理する
+- 分からない場合には手作業で考える
+
+</details>
+
 
