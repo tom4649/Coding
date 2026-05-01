@@ -102,4 +102,12 @@
 
 </details>
 
+<details>
+<summary>49. Group Anagrams</summary>
+
+- 理論上は文字頻度を使う方が速いが、Pythonの組み込みsortはC実装で高速なので、入力サイズによってはsortedを使う方が実測で速いことがある
+- listはmutableでhashableではないため、dictのkeyにするにはtupleへ変換する必要がある
+
+</details>
+
 
