@@ -110,4 +110,28 @@
 
 </details>
 
+<details>
+<summary>349. Intersection of Two Arrays</summary>
+
+- setはhash tableで実装されており、構築は平均O(n)、membership checkは平均O(1)
+- 短い方をsetにすると、空間計算量をO(min(l1, l2))に抑えられる
+- 入力がソート済み、片方だけ巨大、メモリ制約が厳しいなど、追加条件によって適した解法は変わる
+- ソート済み配列同士なら、マージソートのmergeに近いtwo pointersでO(l1 + l2)
+- マージソート
+    - pros: 最悪計算量もO(n log n)で安定、stable sort、外部ソートに向く
+    - cons: 配列では追加メモリO(n)、コピーの定数倍が重い、実測ではquick sortより遅いことが多い
+
+
+</details>
+
+
+<details>
+<summary>929. Unique Email Addresses</summary>
+
+- `str.partition`: 区切り文字で「左、
+区切り文字、右」の3要素に分けるため、最初の1回だけ分割したい意図を表しやすい
+- 正規表現、有限ステートマシン、文字列操作の複数方針
+- Pythonの文字列はimmutableなので、ループ内での文字列連結は避け、必要ならlistにappendして最後に`"".join()`する
+
+</details>
 
