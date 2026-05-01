@@ -92,4 +92,22 @@
 
 </details>
 
+<details>
+<summary>1. Two Sum</summary>
+
+- Hashmapを使うと、必要な相手の値を平均O(1)で確認できるため、全探索のO(n^2)をO(n)に改善できる
+- Type HintsはPython3から導入され、Docstringの型指定が使われなくなった
+- 実装から時間計算量を見積もる時の目安
+    - C++： 約 1～10 億 (10^8~10^9) ステップ/秒、Python： 約 100 万～1000 万 (10^6~10^7) ステップ/秒
+
+</details>
+
+<details>
+<summary>49. Group Anagrams</summary>
+
+- 理論上は文字頻度を使う方が速いが、Pythonの組み込みsortはC実装で高速なので、入力サイズによってはsortedを使う方が実測で速いことがある
+- listはmutableでhashableではないため、dictのkeyにするにはtupleへ変換する必要がある
+
+</details>
+
 
