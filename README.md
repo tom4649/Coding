@@ -147,3 +147,14 @@
 - doubly-linked listでは前後の参照を更新することで、ノード削除をO(1)で行える
 
 </details>
+
+<details>
+<summary>560. Subarray Sum Equals K</summary>
+
+- prefix sumの出現回数をhashmapで管理すると、全区間を列挙するO(n^2)ではなくO(n)で数えられる
+- 累積和配列を作って後から処理するより、走査しながら過去のprefix sumを数える方がシンプルに書ける
+- 和がKになる区間を列挙する問題に変えると、prefix sum同士の対応関係を理解しやすい
+- `defaultdict(int)`を使うと、存在しないprefix sumの出現回数を0として扱えて実装が素直になる
+- パフォーマンス不足はデータ量が増えたときに実行時間やメモリ使用量として現れるため、O(n^2)からO(n)への改善は実務でも効く
+
+</details>
