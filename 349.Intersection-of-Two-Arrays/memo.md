@@ -12,3 +12,12 @@
     - 実行時間は上とほぼ同じ。組み込みのソートは高速ということなんだろう
     - https://github.com/tarinaihitori/leetcode/pull/13#discussion_r1827026532
     - https://github.com/mamo3gr/arai60/blob/main/349_intersection-of-two-arrays/step2.py
+
+### 解き直し
+解けた
+
+sol2.pyでは短い方をsetにしていた: 空間計算量（と定数倍の時間計算量）を小さくできるため
+
+> そうですね。この問題は問題文自体では終わっていなくて、解けた後に、いくつか追加の条件が出てきて、その下でのアルゴリズムとそれらの pros and cons が要求されると思います。
+
+
