@@ -135,3 +135,15 @@
 
 </details>
 
+<details>
+<summary>387. First Unique Character in a String</summary>
+
+- 頻度を先に数えてから再走査する解法はシンプルで堅いが、文字列を2回見る
+- 文字が1回しか流れてこない設定では、現在ユニークな文字だけを順序付きで管理する発想が使える
+- `OrderedDict`は挿入順を保てるため、重複した文字を削除していけば先頭が最初のユニーク文字になる
+- `queue.Queue`はスレッド同期用の機能を持つため、単一スレッドのアルゴリズム用途では`collections.deque`の方が自然
+- `queue.Queue`には`peek`がないので、先頭を見ながら取り除く用途では`deque`の`q[0]`と`popleft()`が使いやすい
+- `OrderedDict`の順序管理は、dictに加えてdoubly-linked listを持つことで実現できる
+- doubly-linked listでは前後の参照を更新することで、ノード削除をO(1)で行える
+
+</details>
