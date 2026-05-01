@@ -17,3 +17,13 @@
     - 参考：https://gist.github.com/joequery/12332f410a05e6c7c949
     - "Doubly"によって前の参照ができることにより、削除をO(1)で実行可能
     - 「これ、OrderedDict の中身は Doubly-Linked List なので、まあ、練習としては、Doubly-Linked List 自体を書いて欲しいところではありますね。」
+
+### 解き直し
+- 空でもう一度書くとdictを使った解法になった
+- sol2のようにOrderedDictも思いつくようにしたい
+- queueとdequeの違いについて調べた：
+    - `queue.Queue`は複数スレッドから安全に使うためのキューで、内部でlockや条件変数を使う
+    - 単一スレッドのアルゴリズム問題では同期処理が不要なので、`queue.Queue`はやや重い
+    - `queue.Queue`には先頭を見るための`peek`がなく、`.queue[0]`で内部実装に触るのは避けたい
+    - `collections.deque`は両端キューで、`append`, `popleft`, `q[0]`を素直に使える
+    - 今回のように先頭を確認しながら古い候補を捨てる用途では`deque`の方が自然
