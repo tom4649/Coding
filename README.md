@@ -242,3 +242,15 @@
 - LeetCodeの指定シグネチャにある引数名は、Pythonではkeyword呼び出しのAPIにもなり得るため、安易に変えない方がよい
 
 </details>
+
+<details>
+<summary>111. Minimum Depth of Binary Tree</summary>
+
+- 最小深さは根から浅い順に見るBFSと相性がよく、最初に見つけた葉の深さをそのまま返せる
+- DFSで解く場合は、全探索しながら最小値を更新するトップダウン再帰か、左右の部分木の答えを集約するボトムアップ再帰で考えられる
+    - トップダウンは、現在の深さや根からの累積情報を引数で子へ配る
+    - ボトムアップは、書きやすい
+- 再帰DFSは木が深いとコールスタック上限に当たる可能性があるため、深い入力があり得るならBFSや明示的なstackも検討する
+- `None`だけを判定したい場合は、PEP 8やGoogle Python Style Guideの考え方に沿って`if node.left is None:`のように書く
+
+</details>
