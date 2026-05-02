@@ -254,3 +254,12 @@
 - `None`だけを判定したい場合は、PEP 8やGoogle Python Style Guideの考え方に沿って`if node.left is None:`のように書く
 
 </details>
+
+<details>
+<summary>617. Merge Two Binary Trees</summary>
+
+- `copy.copy`は浅いコピーなので、親ノードだけが新しくなり、`left`や`right`の子孫ノードは元の木と共有される
+- `copy.deepcopy`は深いコピーなので、`left`や`right`からたどれる子孫ノードも再帰的に複製される
+- immutableなオブジェクトでは浅いコピーと深いコピーの差はほぼ問題にならないが、listやTreeNodeのように内部に別オブジェクトへの参照を持つ複合オブジェクトでは差が出る
+
+</details>
