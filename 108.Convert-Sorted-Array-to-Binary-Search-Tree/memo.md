@@ -14,3 +14,6 @@
 - https://github.com/mamo3gr/arai60/blob/108_convert-sorted_array-to-binary-search-tree/108_convert-sorted_array-to-binary-search-tree/memo.md
     - que, stackを使った実装がある
     - 選択肢として持てるようにしておきたい
+
+### 解き直し
+スタックを用いて書いた
