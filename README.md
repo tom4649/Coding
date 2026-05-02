@@ -263,3 +263,11 @@
 - immutableなオブジェクトでは浅いコピーと深いコピーの差はほぼ問題にならないが、listやTreeNodeのように内部に別オブジェクトへの参照を持つ複合オブジェクトでは差が出る
 
 </details>
+
+<details>
+<summary>108. Convert Sorted Array to Binary Search Tree</summary>
+
+- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
+- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
+
+</details>
