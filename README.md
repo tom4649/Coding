@@ -198,3 +198,47 @@
 - 双方向BFSでは常に小さいfrontierから広げることで探索量を減らせる
 
 </details>
+
+<details>
+<summary>104. Maximum Depth of Binary Tree</summary>
+
+- 二分木の最大深さは、左右の部分木の最大深さを求めて大きい方に1を足すボトムアップ再帰で自然に書ける
+- トップダウン再帰では、現在の深さを引数で渡しながら全ノードをたどり、外側の`max_depth`を更新する
+- 内側関数から外側の変数に再代入する場合は`nonlocal`が必要になる
+    - 外側の変数を参照するだけなら`nonlocal`は不要
+    ```python
+    def outer():
+        x = 1
+
+        def inner():
+            return x
+
+        return inner()
+    ```
+    - しかし、同じ内側関数内で代入すると、Pythonはその名前を内側関数のローカル変数とみなす
+    ```python
+    def outer():
+        x = 1
+
+        def inner():
+            x = x + 1  # UnboundLocalError
+            return x
+
+        return inner()
+    ```
+    - 外側の変数を更新したい場合は`nonlocal`で明示する
+    ```python
+    def outer():
+        x = 1
+
+        def inner():
+            nonlocal x
+            x = x + 1
+            return x
+
+        return inner()
+    ```
+    - `max_depth = max(max_depth, depth)`も同じで、`nonlocal`なしだと右辺の`max_depth`まで内側関数のローカル変数扱いになり、代入前参照で`UnboundLocalError`になる
+- LeetCodeの指定シグネチャにある引数名は、Pythonではkeyword呼び出しのAPIにもなり得るため、安易に変えない方がよい
+
+</details>
