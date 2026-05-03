@@ -335,6 +335,57 @@
 </details>
 
 <details>
+<summary>300. Longest Increasing Subsequence</summary>
+
+- 愚直DPだと計算量 O(n^2)
+- 二分探索でも解ける O(n log n)
+- セグメント木: 元の DP 漸化式 の `max` を区間 max クエリで O(log n) に高速化。全体 O(n log n)
+    - 「値の小ささ」は座標圧縮した index の範囲で、「並び順の前後」は `nums` を順に for で回すことで、別々に分担させる
+    - 1-indexed のセグメント木では「奇数 = 右の子、偶数 = 左の子」となり、区間 max のループ条件が綺麗に書ける
+- Binary Indexed Tree (Fenwick Tree): セグメント木の特殊版で、「常に左端からの累積（prefix）」だけを扱うと決めれば配列サイズを半分（n+1）にできる
+    - `index & -index` で親/子に O(1) で移れる（lowbit）。実装は短いが、prefix 系の操作しかできないのが制約
+- bisect の挙動
+    - `bisect_left(a, x)`: `a[:i]` がすべて `< x` となる最小の `i`（既存の `x` の左）
+    - `bisect_right(a, x)`: `a[:i]` がすべて `<= x` となる最小の `i`（既存の `x` の右）
+    - `a` に `x` がなければ両者は一致
+
+</details>
+
+<details>
+<summary>53. Maximum Subarray</summary>
+
+- 「ある位置 `i` を末尾とする部分配列の最大和」を順に求めれば、その全体の最大が答えになる、という発想で O(n) になる
+- 同じことを2通りの式で書ける（どちらも O(n)、空間 O(1)）
+    - prefix sum
+        - `min_cumulative_sum` の初期値を 0 にすることで、「途中から始める」と「先頭から始める」を統一して扱える
+    - Kadane版のアルゴリズム
+        - 直感的には「過去の合計がマイナスなら相続をやめる」
+
+</details>
+
+<details>
+<summary>62. Unique Paths</summary>
+
+- メモ化再帰で`functools.cache` を使うと再帰関数のメモ化を1行で書ける
+- Python のリスト掛け算
+  - `[1] * 10` のように immutable な要素を掛け算で並べるのは安全
+  - `[[1]] * 10` のように mutable オブジェクトを掛け算で並べると、全要素が同じオブジェクトを指すため一箇所の変更が全体に波及する
+  - 2次元配列を作るときは `[[1] for _ in range(n)]` のように内包表記で個別生成するのが安全
+  - リストはオブジェクトへのポインタを持っており、immutable は再代入で別オブジェクトに差し替わるが mutable はその場で書き換わる、という違いが原因
+
+</details>
+
+
+<details>
+<summary>63. Unique Paths II</summary>
+
+- 配る DPと もらう DP
+  - もらう DP: `dp[r][c]` を「自分が上 / 左から受け取る値」で計算する（一般的）
+  - 配る DP: `dp[r][c]` の値を「右と下のマスへ加算する」形で書く
+- コンパイラ言語とインタプリタ言語での `if` 分岐コストの違い
+  - C / Rust などのコンパイラ言語では、分岐予測失敗で命令パイプラインのやり直しが発生するため、`for` の中の `if` はなるべく減らす方が速い
+  - 「0 行目／0 列目だけの特殊処理」など事前に決まっている分岐は、ループの外に出して別ループで処理した方が、可読性も速度も向上する
+  - Python はインタプリタ実行で元から大量の分岐命令を踏むので、ここを気にしても差は出にくい（可読性の観点では分けてもよい）
 <summary>105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
 
 - preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
