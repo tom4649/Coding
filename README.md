@@ -274,6 +274,13 @@
 
 </details>
 
+<summary>108. Convert Sorted Array to Binary Search Tree</summary>
+
+- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
+- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
+
+</details>
+
 <details>
 <summary>102. Binary Tree Level Order Traversal</summary>
 
@@ -313,5 +320,28 @@
 
 - ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
 - スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
+
+
+<details>
+<summary>103. Binary Tree Zigzag Level Order Traversal</summary>
+
+- 102（level order）に「奇数段だけ向きを反転」を足した派生問題と捉えると、102のBFS解にreverseを1行足すだけで済む
+- リストを「逆順」に扱う方法は用途で選ぶ
+    - `xs.reverse()`：破壊的（in-place）。リスト自体を反転して構わない場面で最有力
+    - `reversed(xs)`：非破壊の逆順イテレータ。`for`で回すだけならコピー不要で軽い（返り値はイテレータ）
+    - `list(reversed(xs))` / `xs[::-1]`：非破壊で「反転した新しいリスト」が欲しいとき（どちらも O(n) コピー）
+    - 手動の`for i in range(len(xs)-1, -1, -1)`：特殊な制御が要るときだけ。可読性は落ちがち
+
+</details>
+
+<details>
+<summary>105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
+
+- preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
+- 改善: inorderの「値 → index」辞書を前計算してO(1)で根の位置を引き、再帰には「配列の範囲（左端 + 子の数、もしくは左端・右端）」を渡してスライスを避けると、時間O(n)・追加空間O(n)になる
+- 別解として、inorderの順番でノードを生成し、stackに「.rightが未確定のノード」を積んでいく構築法もある
+    - inorderで自分より前にあり、preorderで自分より後にあるノードを.leftにまとめて回収する
+    - 親が先にstackに入る性質を使い、自分よりpreorder順で前のノードまでpopして.leftに連結する
+    - 思いつくのは難しい
 
 </details>
