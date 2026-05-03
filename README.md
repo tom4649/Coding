@@ -432,3 +432,8 @@
     - Python 3.9+ では `typing.List[int]` より組み込みの `list[int]` が推奨
     - 引数はより抽象的な型（`Sequence`, `Iterable`）、返り値はより具体的な型（`list[int]`）にすると、呼び出し側の自由度を上げつつ、利用側に確かな情報を返せる
 </details>
+
+<details>
+<summary>122. Best Time to Buy and Sell Stock II</summary>
+- 答えは \( \sum_{k=1}^{n-1}\max(0, p_k - p_{k-1}) \) と書ける
+</details>
