@@ -16,7 +16,7 @@
 https://github.com/mamo3gr/arai60/blob/105_construct-binary-tree-from-preorder-and-inorder-traversal/105_construct-binary-tree-from-preorder-and-inorder-traversal/step2.py
 
 - 区間を表すclass Spanを作っている
-- 無駄がないといういみでは自分の左端とnum_childrenを持つ形でも良さそう
+- 無駄がないという意味では自分の左端とnum_childrenを持つ形でも良さそう
 - frontierを使った再帰ループでも書いている
 
 コメント集
@@ -28,3 +28,6 @@ https://docs.google.com/document/d/11HV35ADPo9QxJOpJQ24FcZvtvioli770WWdZZDaLOfg/
     - 自分の左は確定しているが、右が確定していないノードをstackに積む。これらはinorderで探索しているので、親が先にstackに入る（後に出る）。よって、これらを右に重ねていけばよい。
     - 自分で書くのは無理
 
+
+### 解き直し
+再帰をループに変換
