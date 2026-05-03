@@ -437,3 +437,20 @@
 <summary>122. Best Time to Buy and Sell Stock II</summary>
 - 答えは \( \sum_{k=1}^{n-1}\max(0, p_k - p_{k-1}) \) と書ける
 </details>
+
+<details>
+<summary>139. Word Break</summary>
+
+- `s[start:].startswith(word)` のようなスライスは、毎回新しい文字列オブジェクトを生成する O(n−start) のコピー が発生する。代わりに `s.startswith(word, start)` を使えば追加メモリなしで比較できる。同様に `s[start:end] == word` よりも `s.startswith(word, start)` の方が速い。
+- `str.startswith` は tuple を受け取れる
+
+```python
+s.startswith(("apple", "pen"))  # どれかで始まれば True
+```
+
+-  正規表現的な見方
+    - `((apple)|(pen))*` のように正規表現で書ける問題は、`wordDict` を定数とみなせば NFA/DFA 的に O(n) で解ける
+- `dataclasses.field(default_factory=...)`
+    - `list` / `dict` / `set` のような mutable をフィールドのデフォルト値に直接書くと、`@dataclass` は `TypeError` を出す。インスタンスごとに独立した mutable を持たせたい場合は `default_factory` を使う
+
+</details>
