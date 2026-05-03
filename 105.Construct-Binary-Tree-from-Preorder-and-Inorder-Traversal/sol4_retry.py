@@ -7,6 +7,9 @@
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         assert len(preorder) == len(inorder)
+        val_to_idx_inorder = {}
+        for i, val in enumerate(inorder):
+            val_to_idx_inorder[val] = i
         root = TreeNode()
         frontier = [((0, len(preorder)), (0, len(preorder)), root)]
 
@@ -18,10 +21,7 @@ class Solution:
             ) = frontier.pop()
             node.val = preorder[start_preorder]
             root_idx_inorder = None
-            for i in range(start_inorder, end_inorder):
-                if inorder[i] == preorder[start_preorder]:
-                    root_idx_inorder = i
-                    break
+            root_idx_inorder = val_to_idx_inorder[node.val]
             assert root_idx_inorder is not None
             num_left_children = root_idx_inorder - start_inorder
             if start_inorder < root_idx_inorder:

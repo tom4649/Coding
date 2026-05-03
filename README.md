@@ -329,3 +329,15 @@
     - 手動の`for i in range(len(xs)-1, -1, -1)`：特殊な制御が要るときだけ。可読性は落ちがち
 
 </details>
+
+<details>
+<summary>105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
+
+- preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
+- 改善: inorderの「値 → index」辞書を前計算してO(1)で根の位置を引き、再帰には「配列の範囲（左端 + 子の数、もしくは左端・右端）」を渡してスライスを避けると、時間O(n)・追加空間O(n)になる
+- 別解として、inorderの順番でノードを生成し、stackに「.rightが未確定のノード」を積んでいく構築法もある
+    - inorderで自分より前にあり、preorderで自分より後にあるノードを.leftにまとめて回収する
+    - 親が先にstackに入る性質を使い、自分よりpreorder順で前のノードまでpopして.leftに連結する
+    - 思いつくのは難しい
+
+</details>
