@@ -242,3 +242,32 @@
 - LeetCodeの指定シグネチャにある引数名は、Pythonではkeyword呼び出しのAPIにもなり得るため、安易に変えない方がよい
 
 </details>
+
+<details>
+<summary>111. Minimum Depth of Binary Tree</summary>
+
+- 最小深さは根から浅い順に見るBFSと相性がよく、最初に見つけた葉の深さをそのまま返せる
+- DFSで解く場合は、全探索しながら最小値を更新するトップダウン再帰か、左右の部分木の答えを集約するボトムアップ再帰で考えられる
+    - トップダウンは、現在の深さや根からの累積情報を引数で子へ配る
+    - ボトムアップは、書きやすい
+- 再帰DFSは木が深いとコールスタック上限に当たる可能性があるため、深い入力があり得るならBFSや明示的なstackも検討する
+- `None`だけを判定したい場合は、PEP 8やGoogle Python Style Guideの考え方に沿って`if node.left is None:`のように書く
+
+</details>
+
+<details>
+<summary>617. Merge Two Binary Trees</summary>
+
+- `copy.copy`は浅いコピーなので、親ノードだけが新しくなり、`left`や`right`の子孫ノードは元の木と共有される
+- `copy.deepcopy`は深いコピーなので、`left`や`right`からたどれる子孫ノードも再帰的に複製される
+- immutableなオブジェクトでは浅いコピーと深いコピーの差はほぼ問題にならないが、listやTreeNodeのように内部に別オブジェクトへの参照を持つ複合オブジェクトでは差が出る
+
+</details>
+
+<details>
+<summary>108. Convert Sorted Array to Binary Search Tree</summary>
+
+- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
+- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
+
+</details>
