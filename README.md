@@ -396,3 +396,13 @@
     - 思いつくのは難しい
 
 </details>
+
+<details>
+<summary>198. House Robber</summary>
+
+- DP配列のメモリは O(n) → O(1) に落とせる
+- 変数の意味はコメントで明示すると読みやすい
+- メモ化再帰は `@functools.cache` を使うと1行で書ける
+- `functools.lru_cache` / `functools.cache` のキャッシュはスレッドセーフ
+    - 内部でロックを取っているので、複数スレッドから同じ関数を実行してもキャッシュ自体の状態は壊れない
+</details>
