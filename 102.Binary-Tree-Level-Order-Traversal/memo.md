@@ -42,3 +42,7 @@ n=200000 number=200 repeat=7 (best of repeat)
 list : 1.694295 s
 tuple: 1.462984 s
 tuple/list: 0.8635x
+
+### 解き直し
+もう一度考え直すとBFSが素直だと思ったのでこれで書く
+レビューの提案も反映
