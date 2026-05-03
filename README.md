@@ -265,6 +265,16 @@
 </details>
 
 <details>
+<summary>112. Path Sum</summary>
+
+- 問題自体は再帰で素直に解ける
+- パスを返す/数える発展
+    - 経路自体を返したい場合は、各ノードで「親ノード」または「そこまでの累積和」を辞書/setに記録しておけば、目的の葉から遡って経路を再構成できる
+    - 経路の総数や全列挙が必要なら、early returnせずに最後まで探索し、累積和の出現回数を`defaultdict(int)`で集計するのが良い
+
+</details>
+
+<details>
 <summary>108. Convert Sorted Array to Binary Search Tree</summary>
 
 - ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
