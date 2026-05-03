@@ -329,3 +329,20 @@
     - 手動の`for i in range(len(xs)-1, -1, -1)`：特殊な制御が要るときだけ。可読性は落ちがち
 
 </details>
+
+<details>
+<summary>300. Longest Increasing Subsequence</summary>
+
+- 愚直DPだと計算量 O(n^2)
+- 二分探索でも解ける O(n log n)
+- セグメント木: 元の DP 漸化式 の `max` を区間 max クエリで O(log n) に高速化。全体 O(n log n)
+    - 「値の小ささ」は座標圧縮した index の範囲で、「並び順の前後」は `nums` を順に for で回すことで、別々に分担させる
+    - 1-indexed のセグメント木では「奇数 = 右の子、偶数 = 左の子」となり、区間 max のループ条件が綺麗に書ける
+- Binary Indexed Tree (Fenwick Tree): セグメント木の特殊版で、「常に左端からの累積（prefix）」だけを扱うと決めれば配列サイズを半分（n+1）にできる
+    - `index & -index` で親/子に O(1) で移れる（lowbit）。実装は短いが、prefix 系の操作しかできないのが制約
+- bisect の挙動
+    - `bisect_left(a, x)`: `a[:i]` がすべて `< x` となる最小の `i`（既存の `x` の左）
+    - `bisect_right(a, x)`: `a[:i]` がすべて `<= x` となる最小の `i`（既存の `x` の右）
+    - `a` に `x` がなければ両者は一致
+
+</details>
