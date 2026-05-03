@@ -3,7 +3,7 @@
     - O(n**2)
 - O(nlogn)の解法を思いつくことはできない
 - https://github.com/mamo3gr/arai60/blob/300_longest-increasing-subsequence/300_longest-increasing-subsequence/memo.md
-    - この方針だけ読んで考えてたが無理
+    - この方針だけ読んで考えたが無理
     - コードを読んでやっと理解
 
 bisectの使い方
@@ -28,8 +28,6 @@ https://discord.com/channels/1084280443945353267/1200089668901937312/12095635024
 https://github.com/mamo3gr/arai60/blob/300_longest-increasing-subsequence/300_longest-increasing-subsequence/memo.md
 
 - セグ木を使った解法、Binary Indexed Treeを使った解法
-
-https://github.com/mamo3gr/arai60/blob/300_longest-increasing-subsequence/300_longest-increasing-subsequence/memo.md
 - 色々まとめてくれている
 
 - セグメントツリー
@@ -40,10 +38,15 @@ https://github.com/mamo3gr/arai60/blob/300_longest-increasing-subsequence/300_lo
 - 自分より小さい数字であることを（座標圧縮した）indexで処理し、自分より前の数字であることをnumsの順番のループで処理
 - 自力ではかけない
 
-- BITを使った解法: LLMに書かせたが自分では読んでいない。(sol4)
+- BITを使った解法: LLMに書かせたが自分では書いていない。(sol4)
     - https://algo-logic.info/binary-indexed-tree/
     - 和の区間を最初からに限定することで、メモリと計算効率を上昇
     - bit演算で親や子への移動が可能
     - index & -index = lowbit[index]
     - これを足すことで親に移る
     - 自分では書けない
+
+### 解き直し
+O(nlog n)のsol2.pyは以前として思いつかなった
+sol3.pyとsol4.pyをもう一度読んだ
+セグツリーは見ないと書けないが使えるようにはなりたい
