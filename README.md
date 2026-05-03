@@ -309,5 +309,9 @@
 - 再帰の上限はPythonでは`sys.setrecursionlimit`が言語処理系側でガードする。Javaのスタックは~1MB、Cは~10MBが目安
 - 再帰は「ある条件のときだけログを出して呼び出し元を追う」のが難しい。ループに直すとデバッグしやすい
 - クイックソートで小さい方を再帰、大きい方を末尾再帰で処理するのも、スタック深さ抑制のため
+<summary>108. Convert Sorted Array to Binary Search Tree</summary>
+
+- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
+- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
 
 </details>
