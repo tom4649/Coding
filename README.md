@@ -311,3 +311,15 @@
 - クイックソートで小さい方を再帰、大きい方を末尾再帰で処理するのも、スタック深さ抑制のため
 
 </details>
+
+<details>
+<summary>103. Binary Tree Zigzag Level Order Traversal</summary>
+
+- 102（level order）に「奇数段だけ向きを反転」を足した派生問題と捉えると、102のBFS解にreverseを1行足すだけで済む
+- リストを「逆順」に扱う方法は用途で選ぶ
+    - `xs.reverse()`：破壊的（in-place）。リスト自体を反転して構わない場面で最有力
+    - `reversed(xs)`：非破壊の逆順イテレータ。`for`で回すだけならコピー不要で軽い（返り値はイテレータ）
+    - `list(reversed(xs))` / `xs[::-1]`：非破壊で「反転した新しいリスト」が欲しいとき（どちらも O(n) コピー）
+    - 手動の`for i in range(len(xs)-1, -1, -1)`：特殊な制御が要るときだけ。可読性は落ちがち
+
+</details>
