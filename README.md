@@ -417,3 +417,18 @@
     - `nums[a:b]` は要素 `b - a` 個ぶんの新しいリストを作るため O(b - a) の時間と空間がかかる
     - <https://wiki.python.org/moin/TimeComplexity> に基本演算の計算量がまとまっている
 </details>
+
+<details>
+<summary>121. Best Time to Buy and Sell Stock</summary>
+
+- `itertools.accumulate(prices, min)` で「その日までの最小値」を遅延列として作れる（`sol3.py`）
+    - Haskell の `scanl1 min` 相当。関数型風に「最小列 → 利益列 → max」と書ける
+    - <https://docs.python.org/ja/3/library/itertools.html#itertools.accumulate>
+    - 同じ問題を「scanl で累積最小、zipWith (-) で利益、max で集約」と分解できる
+- import スタイル（Google Python Style Guide）
+    - `from itertools import islice` のように個別の関数を import するのではなく、`import itertools` してから `itertools.islice(...)` と書く方が好まれる
+    - > Use import statements for packages and modules only, not for individual types, classes, or functions.
+- 型ヒント
+    - Python 3.9+ では `typing.List[int]` より組み込みの `list[int]` が推奨
+    - 引数はより抽象的な型（`Sequence`, `Iterable`）、返り値はより具体的な型（`list[int]`）にすると、呼び出し側の自由度を上げつつ、利用側に確かな情報を返せる
+</details>
