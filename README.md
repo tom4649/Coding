@@ -728,3 +728,14 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - 正規表現エンジンはバックトラッキング型だと最悪指数。`.*` の連続は遅くなりやすく、線形時間が保証されているわけではない
 
 </details>
+
+<details>
+<summary>31. Next Permutation</summary>
+
+- 配列のスライスはコピーを作る
+    - `nums[k:].sort()` は スライスのコピーをその場でソートして捨てるだけで、元の `nums` は変わらない
+- `sorted` ではなく `reversed` で十分
+- C++ `std::next_permutation`
+    - Python より簡潔: <https://en.cppreference.com/w/cpp/algorithm/next_permutation>
+
+</details>
