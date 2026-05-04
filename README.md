@@ -805,3 +805,11 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - キーは引数の tuple。`**kwargs` を含めるには辞書順ソートなど一意化の工夫が要る
 
 </details>
+
+<details>
+<summary>776. Split BST</summary>
+
+- BST の不変条件をそのまま使う再帰
+- 再帰とループの中間表現
+
+</details>
