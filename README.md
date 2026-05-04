@@ -739,3 +739,21 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - Python より簡潔: <https://en.cppreference.com/w/cpp/algorithm/next_permutation>
 
 </details>
+
+<details>
+<summary>8. String to Integer (atoi)</summary>
+
+- 32 bit overflow を意識した実装
+    - Python の `int` は任意精度なので overflow しないが、C/Java の 32 bit int を想定して、桁を足す前に判定する
+    - `abs_value > INT_MAX // 10` または `abs_value == INT_MAX // 10 and digit > INT_MAX % 10` で「次に `*10 + digit` をしたら超過する」かを検査できる
+    - *2 の補数の非対称性 `INT_MIN = -INT_MAX - 1` が頭にあると、絶対値で扱った後に sign を掛けるアプローチでも負側の境界をきれいに扱える
+- `int()` は符号もパースする
+    - `int("-42")` / `int("+42")` がそのまま動く: <https://docs.python.org/3/library/functions.html#int>
+- `str.isdigit` / `str.isdecimal` / `str.isnumeric` の違い
+    - **`isdecimal`** ⊂ **`isdigit`** ⊂ **`isnumeric`**
+    - `isdecimal`: Unicode の `Nd`（10 進数字）。半角の `0-9` だけでなく**全角 `１`** も `True`
+    - `isdigit`: 上に加えて上付き `²` など
+    - `isnumeric`: 上に加えて `⅕`（分数）、`Ⅷ`（ローマ数字）など
+    - 半角 0-9 だけ判定したいなら `c.isascii() and c.isdigit()` か `"0" <= c <= "9"` が確実
+
+</details>
