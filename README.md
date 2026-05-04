@@ -792,3 +792,16 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - 計算量は O(V + E)
 
 </details>
+
+<details>
+<summary>276. Paint Fence</summary>
+
+- 2 状態 DP
+- 状態に畳む書き方
+    - フィボナッチと同型の線形漸化式
+- `functools.lru_cache` の実装メモ
+    - **dict + doubly linked list** で挿入 / 削除 / 参照すべて O(1)
+    - 公式実装はスレッドセーフ（内部でロック）: <https://docs.python.org/3/library/functools.html#functools.lru_cache>
+    - キーは引数の tuple。`**kwargs` を含めるには辞書順ソートなど一意化の工夫が要る
+
+</details>
