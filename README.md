@@ -617,3 +617,26 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 - `itertools.accumulate(nums, initial=0)` で sentinel 0 を入れる
 
 </details>
+
+<details>
+<summary>46. Permutations</summary>
+
+- **next permutation アルゴリズム**
+    - 辞書順で「ある順列の次の順列」を O(N) で求める
+    - 手順
+        1. 末尾から見て、はじめて `a[i] < a[i+1]` となる位置を見つけ、`pivot = i` とする（無ければ最後の順列）
+        2. 末尾から見て、はじめて `a[j] > a[pivot]` となる `j` を見つけて swap
+        3. `a[pivot+1:]` を反転（元は降順なので反転で昇順 = 最小化）する
+    - ソート済み配列から始めて、これを `False` が返るまで繰り返せば全順列を辞書順で列挙できる
+    - 空間 O(1) で動く（出力を除く）
+- **バックトラック**
+    - 「探索中に一時的に状態を変更し、再帰から戻るときに必ず元に戻す DFS」
+- **`copy` vs `deepcopy`**
+    - **mutable なオブジェクトを含む**コンテナ → `deepcopy`
+    - **immutable なオブジェクトだけを含む**コンテナ → `copy`（あるいはスライスや `.copy()`）で十分
+    - `nums` が `int` のリストなら `.copy()` で OK
+- **イテレーション順の決定性**
+    - `set` を `for` で回すと順序は実装依存で安定しない
+    - テストや出力の安定性が必要なら `sorted(not_used)` のようにソートを挟む
+
+</details>
