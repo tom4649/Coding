@@ -467,3 +467,13 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - `list` / `dict` / `set` のような mutable をフィールドのデフォルト値に直接書くと、`@dataclass` は `TypeError` を出す。インスタンスごとに独立した mutable を持たせたい場合は `default_factory` を使う
 
 </details>
+
+<details>
+<summary>322. Coin Change</summary>
+
+- `math.isinf`を用いた判定
+- `min` を取るときの工夫
+    - 子の結果を generator で流し、`min(gen, default=-1)` で集約すると、無効値を一切流さずに書ける
+    - `min` / `max` は `default` 引数で「空イテラブルのときの値」を指定できる
+
+</details>
