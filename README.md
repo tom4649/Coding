@@ -757,3 +757,17 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - 半角 0-9 だけ判定したいなら `c.isascii() and c.isdigit()` か `"0" <= c <= "9"` が確実
 
 </details>
+
+<details>
+<summary>6. Zigzag Conversion</summary>
+
+- flatten の書き方
+    - `"".join("".join(row) for row in zigzag)` よりも `"".join(c for row in zigzag for c in row)` の方が中間文字列を作らない
+- `itertools.batched` (Python 3.12+)
+    - 一定サイズずつ chunk に分けるのに使える: <https://docs.python.org/ja/3/library/itertools.html#itertools.batched>
+- **Rope データ構造**
+    - 文字列を chunk に分割して二分木で持つことで、前後への append / prepend / split / concat を高速化できる
+    - Java / Python のように文字列が immutable な言語で、前後操作が頻繁なケースで有効
+    - <https://blog1.mammb.com/entry/2025/11/22/000000>
+
+</details>
