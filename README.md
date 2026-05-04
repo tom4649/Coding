@@ -464,3 +464,38 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - `min` / `max` は `default` 引数で「空イテラブルのときの値」を指定できる
 
 </details>
+
+<details>
+<summary>35. Search Insert Position</summary>
+
+- 標準ライブラリで一発: `bisect.bisect_left(nums, target)` と等価な問題
+- 区間の取り方を最初に決める
+    - 半開区間 `[left, right)` がおすすめ
+        - 初期値: `left = 0`, `right = len(nums)`（`right` は配列外を含めて良い）
+        - ループ条件: `left < right`
+        - ループ不変条件: `i < left ⇒ nums[i] < target` かつ `j >= right ⇒ nums[j] >= target`
+        - 終了時 `left == right` で、これが「最初に `True` の位置」 = 答え
+    - 閉区間 `[left, right]`（`sol2.py`）は `right = len(nums) - 1` から始まり、`right - left > 1` で抜けて末尾を別途見るなど、境界処理が増える
+- `+1` がどこに入るか（半開区間 `[left, right)` の場合）
+    - **`nums[mid] < target` のとき**（右に狭める）
+        - `mid` は確定で `False` 側 → 次の区間に**含めたくない**
+        - 左端は閉区間なので「`mid` を含めない」には `left = mid + 1`（**+1 が要る**）
+    - **`nums[mid] >= target` のとき**（左に狭める）
+        - `mid` は `True` 側で、答え候補なので**含めたい**
+        - 右端は開区間なので `right = mid` で `mid` がそのまま含まれる（**+1 は不要**）
+    - `left = mid + 1` の `+1` がないと、`mid == left` のとき区間が縮まらず無限ループになる
+- 不等号で「lower / upper」が決まる（`bisect_left` vs `bisect_right`）
+    - **lower_bound (`bisect_left`)**: `target` 以上の最小 index
+        - 条件式: `if nums[mid] < target: left = mid + 1`（`<` を使う）
+    - **upper_bound (`bisect_right`)**: `target` より大きい最小 index
+        - 条件式: `if nums[mid] <= target: left = mid + 1`（`<=` を使う）
+- `mid = left + (right - left) // 2` で書く理由
+    - 数学的には `(left + right) // 2` と同値だが、C/Java など固定長整数の言語では `left + right` が**オーバーフローし得る**
+    - Python では int が任意長なので問題ないが、慣習として揃えておくと安全か
+- ループ不変条件で正しさを示す手順
+    - **初期化**: 不変条件を満たす `i, j` が存在しないことを示す（vacuously true）
+    - **維持**: 各分岐後にも不変条件が保たれることを示す（`nums` がソート済みであることを使う）
+    - **終了**: `left == right` で抜けたとき、不変条件と合わせて「`left` が最初の `True` の位置」が言える
+- 再帰でも書ける
+
+</details>
