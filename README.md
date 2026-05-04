@@ -585,3 +585,21 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - <https://stackoverflow.com/questions/109023/count-the-number-of-set-bits-in-a-32-bit-integer#109025>
 
 </details>
+
+<details>
+<summary>3. Longest Substring Without Repeating Characters</summary>
+
+- **sliding window (スライディングウィンドウ)**
+    - 線形シーケンスに対し「窓 (window) = 連続区間 `[left, right]`」を左から右へ滑らせて答えを更新する設計パターンの総称
+    - **固定長**: 窓サイズが定数 `k`（例: 長さ `k` の連続部分配列の和の最大）
+    - **可変長**: 窓サイズが条件を満たす最大／最小で決まる（この問題はこちら）
+    - 尺取法 (caterpillar method, two pointers): 可変長 sliding window の日本語名
+    - 性質: **両ポインタは単調増加の方向にしか動かさない（戻さない）**
+    - 計算量: 一見二重ループでも各ポインタが最大 n 回しか進まないので **合計 O(n)**（償却計算量 / amortized analysis の典型例）
+- **適用条件 (単調性)**
+    - 「区間 `[l, r]` が条件を満たす ⇒ `[l, r-1]` も満たす」「満たさない ⇒ 伸ばしても満たさない」のような単調性が必要
+    - 単調性がない場合は DP や累積和+ハッシュなど別アプローチに切り替える
+    - 尺取法: <https://qiita.com/drken/items/ecd1a472d3a0e7db8dce>
+    - sliding window: <https://qiita.com/rumblekat03/items/4edd9dd4607280c994d1>
+
+</details>
