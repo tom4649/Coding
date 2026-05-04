@@ -603,3 +603,17 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - sliding window: <https://qiita.com/rumblekat03/items/4edd9dd4607280c994d1>
 
 </details>
+
+
+<details>
+<summary>209. Minimum Size Subarray Sum</summary>
+
+- 可変長 sliding window (尺取法)
+    - 「右端 `right` を 1 つ広げる → 条件を満たすまで左端 `left` を縮める」で各窓の最短性を保つ
+    - `left` は単調増加
+- prefix sum + 二分探索
+    - 全体で O(n log n)、空間 O(n)
+    - `nums` が正なので `prefix_sum` は単調増加 → 二分探索が成立
+- `itertools.accumulate(nums, initial=0)` で sentinel 0 を入れる
+
+</details>
