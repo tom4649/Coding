@@ -771,3 +771,24 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - <https://blog1.mammb.com/entry/2025/11/22/000000>
 
 </details>
+
+<details>
+<summary>323. Number of Connected Components in an Undirected Graph</summary>
+
+- Union-Find
+    - 連結成分数を求める典型問題。経路圧縮 + (rank or size) ヒューリスティック
+- 経路圧縮 (path compression)
+    - 再帰中に `self.parents[i] = self.find(self.parents[i])` で経路上のノードをすべて根に付け替える
+    - これだけで find が将来的にほぼ O(1) になる
+- Union by Rank vs Union by Size
+    - **Rank**: 木の高さの**上界**。経路圧縮後は実際の高さより大きくなることがある。**等しいランク同士を merge するときだけ +1**
+    - **Size**: 集合の**要素数**。merge のたびに相手のサイズを加える
+    - どちらも「小さい木を大きい木の下にぶら下げる」ことで平衡を保つ目的は同じ
+    - <https://en.wikipedia.org/wiki/Disjoint-set_data_structure#Union_by_size>
+- 連結成分数は `count` を持たせるのが速い
+    - 初期化時 `count = n`、`union` で実際に merge したときだけ `count -= 1`
+- DFS / BFS でも解ける
+    - 隣接リストを作って各未訪問ノードから探索 → 立ち上げた回数が連結成分数
+    - 計算量は O(V + E)
+
+</details>
