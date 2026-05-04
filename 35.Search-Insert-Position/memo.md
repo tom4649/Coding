@@ -89,9 +89,9 @@ i >= right →　flag_nums[i] == True
 
 ### ループ不変式:
 
-i < left -> nums[i] <= target (1)
+i < left -> nums[i] < target (1)
 
-&& j >= right -> nums[j] > target (2)
+&& j >= right -> nums[j] >= target (2)
 
 
 ### 成り立つことの確認
@@ -100,8 +100,8 @@ i < left -> nums[i] <= target (1)
 i < left, j >= rightとなるi, jは存在しない。
 
 #### 維持: ある反復で成り立つと仮定して次の反復で成り立つことを示す。場合分け。
-- nums[middle] <= target の場合: numsがソートされているため left=middle+1とした場合、(1) は依然として成立
-- nums[middle] > target の場合 numsがソートされているため right=middle とした場合(2) は依然として成立
+- nums[middle] < target の場合: numsがソートされているため left=middle+1とした場合、(1) は依然として成立
+- nums[middle] >= target の場合 numsがソートされているため right=middle とした場合(2) は依然として成立
 
 #### 終了: left < rightがFalseとなる。更新式よりleft==rightである
 (1),(2)と合わせて、
