@@ -563,3 +563,32 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - <https://docs.python.org/ja/3/library/functions.html#pow>
 
 </details>
+
+<details>
+<summary>779. K-th Symbol in Grammar</summary>
+
+- 問題の構造を観察して特徴づける
+    - n 行目の文字列は、**前半 = (n-1) 行目そのまま、後半 = (n-1) 行目を flip したもの**、初期値 `S(1) = "0"`
+    - 漸化式: `kthGrammar(n, k) = kthGrammar(n-1, k)` （k が前半）/ `1 - kthGrammar(n-1, k - half)` （k が後半）
+- 再帰版 `sol1.py` → 反復版 `sol2.py`
+    - 再帰版: 上の漸化式そのまま。時間 O(n)、空間は再帰スタック O(n)
+    - 反復版: `half_length` を半分ずつ割りながら、k が後半に落ちる回数 (`num_flip`) を数える。最終的に `num_flip % 2` を返す
+    - 反復に直すと、これは「k-1 を 2 進表記したときに上位ビットから順に 1 が立っている位置」を数えているだけだと気付ける
+- 出力は **n に依存しない**
+    - 反復版を眺めると、操作は `half_length` で割っていくだけで、結果に効くのは flip の総数の偶奇のみ
+    - つまり答えは「**`k - 1` の 2 進表記に立っている 1 の個数 (popcount) の偶奇**」
+- 組み込み `int.bit_count()` で 1 行になる (`sol3.py`)
+    - `(k - 1).bit_count() % 2`
+    - <https://docs.python.org/ja/3/library/stdtypes.html#int.bit_count>
+- ビット数を数える操作の用語整理
+    - **Hamming weight**: ビット列に立っている 1 の個数。0 だけからなる文字列とのハミング距離と等価
+    - **popcnt (Population Count)**: x86 などにあるハードウェア命令で、立っているビット数を 1 命令で数える
+    - **SWAR (SIMD Within A Register)**: ハードウェア popcnt が無い環境でビット並列に popcount を計算する技法
+        - シフトと `0x55555555` (`0101…`)、`0x33333333` (`0011…`)、`0x0F0F0F0F` (`00001111…`) などのマスクの AND を組み合わせ、2 bit ごと → 4 bit ごと → 8 bit ごと…と部分和を畳み込んでいく
+        - 1 つのレジスタ内で複数の小さな並列加算を同時に進めるイメージ
+    - **SIMD (Single Instruction, Multiple Data)**: 1 命令で複数データを同時処理する仕組み。日本語読みは「シムディー」
+- GCC 10 / Clang 10 以降は、popcount 実装を自動でハードウェア `popcnt` 命令に置換してくれる
+- 参考
+    - <https://stackoverflow.com/questions/109023/count-the-number-of-set-bits-in-a-32-bit-integer#109025>
+
+</details>
