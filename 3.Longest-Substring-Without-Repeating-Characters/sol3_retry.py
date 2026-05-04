@@ -3,7 +3,7 @@ class Solution:
         char_to_last_index = {}
         start = -1
         max_length = 0
-        for end, c in s:
+        for end, c in enumerate(s):
             prev = char_to_last_index.get(c, -1)
             if prev >= start:
                 start = prev + 1
