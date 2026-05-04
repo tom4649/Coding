@@ -813,3 +813,16 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
 - 再帰とループの中間表現
 
 </details>
+
+<details>
+<summary>252. Meeting Rooms</summary>
+
+- ソート + 隣接区間の比較
+    - `itertools.pairwise`を使うと隣接ペアを綺麗にイテレートできる: <https://docs.python.org/3/library/itertools.html#itertools.pairwise>
+- いもす法 (Imos method)
+    - 区間 `[s, e)` に対して `diff[s] += 1`, `diff[e] -= 1` の**差分配列**を作る
+    - 累積和を取ると、各時刻における「同時並行している区間の数」が得られる
+    - 衝突 = ある時刻で累積和が 2 以上
+    - 値域が大きい / 疎なら **座標圧縮**（`time_to_rank`）と組み合わせて O(n log n)
+
+</details>
