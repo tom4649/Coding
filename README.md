@@ -826,3 +826,22 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - 値域が大きい / 疎なら **座標圧縮**（`time_to_rank`）と組み合わせて O(n log n)
 
 </details>
+
+<details>
+<summary>253. Meeting Rooms II</summary>
+
+- 必要な会議室数 = 任意の時刻に同時並行している区間の最大数
+- いもす法 + 座標圧縮
+    - 252 のいもす法をそのまま流用し、累積和の 最大値 を取るように変えるだけ
+    - 値域が疎なので時刻を rank 化（座標圧縮）
+- start と end は分けて持って良い
+- `(time, ±1)` のイベントソート
+- min-heap で部屋を再利用する
+    - 開始時刻でソートし、各会議に対して
+        - heap (= 使用中の部屋の終了時刻) の最小値が現 start 以下なら pop（部屋を解放）
+        - 現会議の end を push
+    - 最終的な heap サイズ = 必要な部屋数
+    - 「受付が郵便箱の鍵を回収しつつ新しい鍵を渡す」
+    - 全体 O(n log n)
+
+</details>
