@@ -694,3 +694,40 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - <https://oeis.org/A000041>
 
 </details>
+
+<details>
+<summary>22. Generate Parentheses</summary>
+
+- 答えの個数は カタラン数 \( C_n = \frac{1}{n+1}\binom{2n}{n} \sim \frac{4^n}{n^{3/2}\sqrt{\pi}} \)
+    - 出力サイズ自体が \( O(n \cdot C_n) \) なので、どの解法も最低この計算量はかかる
+- 3 通りのアプローチ
+    - 明示スタック DFS : `frontier = [(prefix, left_used, right_used)]` を pop しながら探索
+    - バックトラック: `(` / `)` を append → 再帰 → pop
+    - 構造的分類による再帰 : 「最初の `(` に対応する `)` の位置」で分類すると `valid(n) = ⋃_{i=0}^{n-1} { "(A)B" : A ∈ valid(i), B ∈ valid(n-1-i) }` という再帰式が得られる。これがカタラン数の漸化式そのもの
+- 「分類の網羅」
+    - 解空間をどう分けるかは何でもよいが、**網羅的に分類できているか**が要点
+    - `(A)B` 分類は、最初の `(` の対応相手で必ず一意に分けられる → 重複なく全列挙できる
+- 文字列バックトラックの実装比較
+    - 直感に反して 毎回新しい文字列を作る O(L) コピー の方が`list[str]` に `append` / `pop` し、最後に `"".join(prefix)`より速いことがある
+        - 答えの本数 \( C_n \) だけ `"".join` を呼ぶオーバーヘッドが効いてくる
+        - 「文字列の伸縮自体はそんなに重くない vs join の固定コストが本数ぶん積み上がる」
+        - 計算量が漸近的に同じ範囲では、定数倍は実測してみないとわからない
+
+</details>
+
+<details>
+<summary>283. Move Zeroes</summary>
+
+- **Erase–remove idiom**
+    - 「削除条件に合うものを末尾に寄せる (remove) → まとめて切り捨てる (erase)」を分けて考えるイディオム
+    - 素朴に「削除した瞬間に前に詰める」と毎回 O(n) のコピーで全体 O(n^2) になる
+    - 寄せる操作だけにすれば、各要素は高々 1 回しか触らないので O(n)
+    - <https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom>
+- 「非ゼロを前に詰める」= quicksort の partition
+    - ピボット = 0 とした partition と同じ構造
+    - 結果として「非ゼロ部分 + ゼロ部分」の 2 領域に分割される
+- 関数化のトレードオフ
+    - 共通化で可読性は上がるが、Python では関数呼び出しのオーバーヘッドが定数倍として効く
+    - 計算量が同じ範囲なら気にしないことが多いが、内側ループから何百万回呼び出すケースでは差が出る
+
+</details>
