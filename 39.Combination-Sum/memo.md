@@ -37,3 +37,9 @@ https://github.com/Mike0121/LeetCode/pull/1#discussion_r1578212926
 > a(n) ~ 1/(4nsqrt(3)) * e^(Pi * sqrt(2n/3)) as n -> infinity (Hardy and Ramanujan)
 > https://oeis.org/A000041
 > だいたい、13^sqrt(n) / 7n くらいですか。
+
+### 解き直し
+sol7_retry.pyを解く時にやや混乱した
+exclude: index+1
+include: index
+を渡す
