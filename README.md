@@ -499,3 +499,12 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 - 再帰でも書ける
 
 </details>
+
+
+<details>
+<summary>153. Find Minimum in Rotated Sorted Array</summary>
+
+- ループ不変条件を「`i < left` なら `nums[i]` 側は `False`、`i >= right` なら `nums[i]` 側は `True`」と置くと、終了時 `left == right` のとき「`True` になる最も左の index」が得られる
+- このとき更新式は、`nums[middle]` が `False` 側なら `left = middle + 1` となる
+
+</details>
