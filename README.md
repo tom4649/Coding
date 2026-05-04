@@ -718,3 +718,13 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - 計算量が同じ範囲なら気にしないことが多いが、内側ループから何百万回呼び出すケースでは差が出る
 
 </details>
+
+<details>
+<summary>392. Is Subsequence</summary>
+
+- 正規表現
+    - `pattern = ".*" + ".*".join(re.escape(c) for c in s)` のように書くのが素直
+    - `re.escape` を忘れると `s` に `.` / `*` / `+` などが混ざった入力で誤動作する
+    - 正規表現エンジンはバックトラッキング型だと最悪指数。`.*` の連続は遅くなりやすく、線形時間が保証されているわけではない
+
+</details>
