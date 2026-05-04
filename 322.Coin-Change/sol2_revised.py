@@ -15,4 +15,4 @@ class Solution:
                         num_changes[target_amount - coin] + 1,
                     )
 
-        return -1 if math.inf(num_changes[amount]) else num_changes[amount]
+        return -1 if math.isinf(num_changes[amount]) else num_changes[amount]

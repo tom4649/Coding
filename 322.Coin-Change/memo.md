@@ -34,3 +34,5 @@ https://github.com/mamo3gr/arai60/blob/322_coin-change/322_coin-change/memo.md
 generatorなら作れない場合の無効値を流さず書くことができる（minを取るときにリストを作る必要もない）
 minにdefaultがあることも知らなかった
 
+### 解き直し
+早期終了ができるBFSが良い回答だと思ったので書き直す
