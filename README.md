@@ -567,13 +567,6 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 <details>
 <summary>779. K-th Symbol in Grammar</summary>
 
-- 問題の構造を観察して特徴づける
-    - n 行目の文字列は、**前半 = (n-1) 行目そのまま、後半 = (n-1) 行目を flip したもの**、初期値 `S(1) = "0"`
-    - 漸化式: `kthGrammar(n, k) = kthGrammar(n-1, k)` （k が前半）/ `1 - kthGrammar(n-1, k - half)` （k が後半）
-- 再帰版 `sol1.py` → 反復版 `sol2.py`
-    - 再帰版: 上の漸化式そのまま。時間 O(n)、空間は再帰スタック O(n)
-    - 反復版: `half_length` を半分ずつ割りながら、k が後半に落ちる回数 (`num_flip`) を数える。最終的に `num_flip % 2` を返す
-    - 反復に直すと、これは「k-1 を 2 進表記したときに上位ビットから順に 1 が立っている位置」を数えているだけだと気付ける
 - 出力は **n に依存しない**
     - 反復版を眺めると、操作は `half_length` で割っていくだけで、結果に効くのは flip の総数の偶奇のみ
     - つまり答えは「**`k - 1` の 2 進表記に立っている 1 の個数 (popcount) の偶奇**」
