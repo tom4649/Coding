@@ -18,3 +18,6 @@ https://github.com/hroc135/leetcode/pull/41#discussion_r1970984248
 https://github.com/mamo3gr/arai60/blob/33_search-in-rotated-sorted-array/33_search-in-rotated-sorted-array/memo.md
 
 
+
+### 解き直し
+Pair の方針で一発で解けたので嬉しい
