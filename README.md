@@ -598,3 +598,86 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - <https://stackoverflow.com/questions/109023/count-the-number-of-set-bits-in-a-32-bit-integer#109025>
 
 </details>
+
+<details>
+<summary>3. Longest Substring Without Repeating Characters</summary>
+
+- **sliding window (スライディングウィンドウ)**
+    - 線形シーケンスに対し「窓 (window) = 連続区間 `[left, right]`」を左から右へ滑らせて答えを更新する設計パターンの総称
+    - **固定長**: 窓サイズが定数 `k`（例: 長さ `k` の連続部分配列の和の最大）
+    - **可変長**: 窓サイズが条件を満たす最大／最小で決まる（この問題はこちら）
+    - 尺取法 (caterpillar method, two pointers): 可変長 sliding window の日本語名
+    - 性質: **両ポインタは単調増加の方向にしか動かさない（戻さない）**
+    - 計算量: 一見二重ループでも各ポインタが最大 n 回しか進まないので **合計 O(n)**（償却計算量 / amortized analysis の典型例）
+- **適用条件 (単調性)**
+    - 「区間 `[l, r]` が条件を満たす ⇒ `[l, r-1]` も満たす」「満たさない ⇒ 伸ばしても満たさない」のような単調性が必要
+    - 単調性がない場合は DP や累積和+ハッシュなど別アプローチに切り替える
+    - 尺取法: <https://qiita.com/drken/items/ecd1a472d3a0e7db8dce>
+    - sliding window: <https://qiita.com/rumblekat03/items/4edd9dd4607280c994d1>
+
+</details>
+
+
+<details>
+<summary>209. Minimum Size Subarray Sum</summary>
+
+- 可変長 sliding window (尺取法)
+    - 「右端 `right` を 1 つ広げる → 条件を満たすまで左端 `left` を縮める」で各窓の最短性を保つ
+    - `left` は単調増加
+- prefix sum + 二分探索
+    - 全体で O(n log n)、空間 O(n)
+    - `nums` が正なので `prefix_sum` は単調増加 → 二分探索が成立
+- `itertools.accumulate(nums, initial=0)` で sentinel 0 を入れる
+
+</details>
+
+<details>
+<summary>46. Permutations</summary>
+
+- **next permutation アルゴリズム**
+    - 辞書順で「ある順列の次の順列」を O(N) で求める
+    - 手順
+        1. 末尾から見て、はじめて `a[i] < a[i+1]` となる位置を見つけ、`pivot = i` とする（無ければ最後の順列）
+        2. 末尾から見て、はじめて `a[j] > a[pivot]` となる `j` を見つけて swap
+        3. `a[pivot+1:]` を反転（元は降順なので反転で昇順 = 最小化）する
+    - ソート済み配列から始めて、これを `False` が返るまで繰り返せば全順列を辞書順で列挙できる
+    - 空間 O(1) で動く（出力を除く）
+- **バックトラック**
+    - 「探索中に一時的に状態を変更し、再帰から戻るときに必ず元に戻す DFS」
+- **`copy` vs `deepcopy`**
+    - **mutable なオブジェクトを含む**コンテナ → `deepcopy`
+    - **immutable なオブジェクトだけを含む**コンテナ → `copy`（あるいはスライスや `.copy()`）で十分
+    - `nums` が `int` のリストなら `.copy()` で OK
+- **イテレーション順の決定性**
+    - `set` を `for` で回すと順序は実装依存で安定しない
+    - テストや出力の安定性が必要なら `sorted(not_used)` のようにソートを挟む
+
+</details>
+
+<details>
+<summary>78. Subsets</summary>
+
+- バックトラック再帰
+- Iterative doubling
+    - 観察: `subsets({a, b, c}) = subsets({a, b}) ∪ {S ∪ {c} | S ∈ subsets({a, b})}`
+    - 実装は驚くほど短い
+
+- **lazy iterator 版**
+    - **`itertools.tee(it, n)`**: 1 つのイテレータを `n` 個の独立したイテレータに分割。一方が先に進むと内部バッファに保持されるので、消費が大きくずれるとメモリも食う
+    - **デフォルト引数で値をキャプチャするイディオム**
+
+```python
+results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
+```
+        - Python の `lambda s: s + [value]` だと、ループ内のすべての lambda が**同じ `value` 変数**を参照してしまう（**遅延評価 / late binding**）
+        - `v=value` のように **デフォルト引数**にすると、関数定義時に `value` の現在値が評価され、各 lambda に「束縛された値」として保持される
+        - 公式ドキュメントより:
+          > デフォルト引数値は関数定義が実行されるときに左から右へ評価されます
+          - <https://docs.python.org/ja/3/reference/compound_stmts.html#function-definitions>
+- Python の引数渡しの呼び方
+    - Python は **call-by-object (参照の値渡し)**: 「オブジェクトへの参照を値としてコピーして渡す」
+    - **call by value**: 実引数を 1 度評価して、値（のコピー）を仮引数に束縛
+    - **call by name**: 実引数は呼び出し時には評価せず、関数本体で名前が使われるたびに元の式を再評価
+    - デフォルト引数の話は「評価戦略」というより、「**デフォルト引数式がいつ評価されるか**」の話
+
+</details>
