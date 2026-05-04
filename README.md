@@ -523,3 +523,43 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 - 「条件を満たす最小値（最大値）」を求める問題であれば二分探索を適用できるかもしれない
 
 </details>
+
+<details>
+<summary>50. Pow(x, n)</summary>
+
+- 高速冪乗 (binary exponentiation)
+    - 指数を2進展開し、立っているビットの位置だけ「累積二乗した底」を結果に掛け合わせれば O(log n) で計算できる
+- `x ** 2` と `x * x` の違い
+    - `**` は巨大値で `OverflowError` を投げ得るが、`*` はIEEE-754準拠で静かに `inf` を返す
+    - `inf` は後段の演算でも一貫して伝播する（`inf * 有限 = inf`、`1/inf = 0.0`）ため、計算を止めずに済む
+- IEEE-754 浮動小数点数の構成
+    - 値の式: \( (-1)^{\text{符号}} \times 1.\text{仮数} \times 2^{\text{指数} - \text{bias}} \)
+    - bias = \( 2^{(\text{指数部bit}) - 1} - 1 \)
+    - 符号 / 指数 / 仮数 の bit 数
+        - 単精度 (float):  32 bit = 1 / **8** / 23
+        - 倍精度 (double): 64 bit = 1 / **11** / 52
+    - 指数部の `8` と `11` を覚えておくと、復元
+    - 特殊値: `1/0` が `inf`、`0/0` が `NaN` などもIEEE-754の規定
+- Python の `int` と `float`
+    - **`int` は任意精度 (arbitrary-precision / bignum)** で、ビット数の上限はない（メモリが許す限り桁を増やせる）
+        - C/Java の `int32` / `int64` と違って算術オーバーフロー自体が起こらない
+    - **`float` は IEEE-754 倍精度**に従うので上限・下限・精度の制約を受ける
+        - Pow(x, n) は引数 `x` が `float` なので、ここの制約が効いてくる（int 同士なら問題にならなかった話）
+    - Python 3.11 以降は DoS 対策で `int(s)` / `str(n)` の文字列⇔整数変換に既定 4300 桁の上限が入る
+        - `sys.set_int_max_str_digits(0)` で解除できる
+        - これは「整数の値そのもの」ではなく「文字列変換の桁数」に対する制限である
+- 末尾再帰と Trampoline
+    - `myPowHelper(base, exp, acc)` のように累積引数 `acc` を持たせれば末尾再帰の形に書ける
+    - C/Scheme のような末尾再帰最適化 (TCO) があれば定数スタックで動くが、**Pythonは TCO を実装していない**ので、そのままだと深い再帰でスタック
+        - <https://docs.python.org/3.15/whatsnew/3.14.html#whatsnew314-tail-call>
+    - 代わりに **Trampoline** という手法でループへ展開できる
+        - <https://note.com/_ikb_/n/nc67f3e541f20>
+        - デコレータの内部で `nonlocal` の `firstcall` フラグと `params` を持ち、最初の呼び出しだけ `while` ループに入る。再帰呼び出しは引数だけ更新して即 `func` を返し、ループ側で次の反復として処理される
+        - 結果として実際のスタック消費は定数になるが、関数呼び出しのオーバーヘッドが乗るため実行時間はやや遅くなる
+- `functools.wraps`
+    - デコレートした関数に元関数の `__name__` / `__doc__` などのメタデータを引き継がせる
+    - <https://docs.python.org/ja/3/library/functools.html#functools.update_wrapper>
+- 組み込み `pow` は3引数 `pow(base, exp, mod)` でモジュラー指数も計算できる（暗号系で使われる）
+    - <https://docs.python.org/ja/3/library/functions.html#pow>
+
+</details>
