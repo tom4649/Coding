@@ -681,3 +681,16 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - デフォルト引数の話は「評価戦略」というより、「**デフォルト引数式がいつ評価されるか**」の話
 
 </details>
+
+<details>
+<summary>39. Combination Sum</summary>
+
+- 同じ要素を何度でも使ってよい問題なので、再帰呼び出しで渡す index は `i + 1` ではなく `i`(自分自身も再利用可)
+- **バックトラック (in-place) vs 中間リスト生成**
+    - 再帰で `[num] + combination` のように毎回新しいリストを作る書き方は、答え 1 つあたり O(深さ) のアロケーションが何度も発生する
+    - `combination` を呼び出し間で共有して `append` / `pop` する破壊的バックトラックなら、新しいリストを作るのは「答えとして確定したときの `combination.copy()`」だけで済むので最も省メモリ
+- **計算量の見積もり**
+    - `candidates = [1..target]` の場合、解の個数は **整数の分割数** \( p(n) \) と一致し、Hardy–Ramanujan の漸近式 \( p(n) \sim \frac{1}{4n\sqrt{3}} e^{\pi\sqrt{2n/3}} \) で指数的に増える
+    - <https://oeis.org/A000041>
+
+</details>
