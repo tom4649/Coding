@@ -515,3 +515,11 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 - 評価関数の工夫
 
 </details>
+
+
+<details>
+<summary>1011. Capacity To Ship Packages Within D Days</summary>
+
+- 「条件を満たす最小値（最大値）」を求める問題であれば二分探索を適用できるかもしれない
+
+</details>
