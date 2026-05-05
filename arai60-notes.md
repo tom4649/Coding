@@ -1,7 +1,7 @@
-# Coding
-
+# [Arai60](https://1kohei1.com/leetcode/)で学んだことのメモ
+## LinkedList
 <details>
-<summary>0141.Linked List Cycle</summary>
+<summary>0141. Linked List Cycle</summary>
 
 - `set`を使った解法
 - `set`と`dict`がどちらもhashtableで値を格納している
@@ -9,18 +9,19 @@
 - `__eq__` が `True` なら、`__hash__` も等しくなければならない
 
 </details>
+
 <details>
-<summary>0142.Linked List Cycle II</summary>
+<summary>0142. Linked List Cycle II</summary>
 
 - Floydの循環検出法（有名だが常識ではない）
-- `is`と`==`の違い: オブジェクトの同一性を比較する。同じインスタンスかどうか
+- `is`と`==`の違い: 前者はオブジェクトの同一性、後者は等価性を比較する
     - `is`: オブジェクトの同一性を比較する。同じインスタンスかどうかを`id()`で判定（CPythonではメモリアドレスとして実装されている）。
     - `==`: `__eq__`でオブジェクトの等価性を比較する。
 
 </details>
 
 <details>
-<summary>83.Remove Duplicates from Sorted List</summary>
+<summary>0083. Remove Duplicates from Sorted List</summary>
 
 - Linked Listの操作
 - 変数名には組み込み名と衝突する名前を使わない
@@ -28,7 +29,7 @@
 </details>
 
 <details>
-<summary>82.Remove Duplicates from Sorted List II</summary>
+<summary>0082. Remove Duplicates from Sorted List II</summary>
 
 - 変数名の意味を考える
 - currentの名前は情報量がない
@@ -36,38 +37,43 @@
 
 </details>
 
-
 <details>
-<summary>0002.Add Two Numbers</summary>
+<summary>0002. Add Two Numbers</summary>
 
 - 多倍長整数の加算
 
 </details>
 
-<details>
-<summary>20. Valid Parentheses</summary>
+## Stack
 
-- PEP-8 と Google Style Guide では strings, lists, tuples は implicit で真偽判定
+<details>
+<summary>0020. Valid Parentheses</summary>
+
+- PEP-8 と Google Style Guide では strings, lists, tuples は暗黙の真偽判定 (implicit booleanness) が推奨される
 - 副作用のある式を条件のところに書かない方が良いかもしれない。読む側が頭の中で実行順序を追う必要が出るため。e.g. `stack.pop()`
 
 </details>
 
 <details>
-<summary>206. Reverse Linked List</summary>
+<summary>0206. Reverse Linked List</summary>
 
 - 一度の走査で行うポインタの付け替え
 
 </details>
+
+## Heap, PriorityQueue
+
 <details>
-<summary>703. Kth Largest Element in a Stream</summary>
+<summary>0703. Kth Largest Element in a Stream</summary>
 
 - heapqライブラリの使い方
 - マージソート、クイックソート、クイックセレクトの確認
 - ヒープの構築がO(n)であることが抜けていた
 
 </details>
+
 <details>
-<summary>347. Top K Frequent Elements</summary>
+<summary>0347. Top K Frequent Elements</summary>
 
 - ヒープの構築はO(n) (再)
 - クイックソートの実装
@@ -76,23 +82,17 @@
 </details>
 
 <details>
-<summary>98. Validate Binary Search Tree</summary>
-
-- 木の探索順（preorder, inorder, postorder）
-- 再帰とループの変換
-- ロジックの流暢さ
-
-</details>
-<details>
-<summary>373.Find K Pairs with Smallest Sums</summary>
+<summary>0373. Find K Pairs with Smallest Sums</summary>
 
 - 全組み合わせを作らず、次に小さくなりうる候補だけをヒープで管理する
 - 分からない場合には手作業で考える
 
 </details>
 
+## HashMap
+
 <details>
-<summary>1. Two Sum</summary>
+<summary>0001. Two Sum</summary>
 
 - Hashmapを使うと、必要な相手の値を平均O(1)で確認できるため、全探索のO(n^2)をO(n)に改善できる
 - Type HintsはPython3から導入され、Docstringの型指定が使われなくなった
@@ -102,7 +102,7 @@
 </details>
 
 <details>
-<summary>49. Group Anagrams</summary>
+<summary>0049. Group Anagrams</summary>
 
 - 理論上は文字頻度を使う方が速いが、Pythonの組み込みsortはC実装で高速なので、入力サイズによってはsortedを使う方が実測で速いことがある
 - listはmutableでhashableではないため、dictのkeyにするにはtupleへ変換する必要がある
@@ -110,7 +110,7 @@
 </details>
 
 <details>
-<summary>349. Intersection of Two Arrays</summary>
+<summary>0349. Intersection of Two Arrays</summary>
 
 - setはhash tableで実装されており、構築は平均O(n)、membership checkは平均O(1)
 - 短い方をsetにすると、空間計算量をO(min(l1, l2))に抑えられる
@@ -120,22 +120,19 @@
     - pros: 最悪計算量もO(n log n)で安定、stable sort、外部ソートに向く
     - cons: 配列では追加メモリO(n)、コピーの定数倍が重い、実測ではquick sortより遅いことが多い
 
-
 </details>
 
-
 <details>
-<summary>929. Unique Email Addresses</summary>
+<summary>0929. Unique Email Addresses</summary>
 
-- `str.partition`: 区切り文字で「左、
-区切り文字、右」の3要素に分けるため、最初の1回だけ分割したい意図を表しやすい
+- `str.partition`: 区切り文字で「左、区切り文字、右」の3要素に分けるため、最初の1回だけ分割したい意図を表しやすい
 - 正規表現、有限ステートマシン、文字列操作の複数方針
 - Pythonの文字列はimmutableなので、ループ内での文字列連結は避け、必要ならlistにappendして最後に`"".join()`する
 
 </details>
 
 <details>
-<summary>387. First Unique Character in a String</summary>
+<summary>0387. First Unique Character in a String</summary>
 
 - 頻度を先に数えてから再走査する解法はシンプルで堅いが、文字列を2回見る
 - 文字が1回しか流れてこない設定では、現在ユニークな文字だけを順序付きで管理する発想が使える
@@ -148,7 +145,7 @@
 </details>
 
 <details>
-<summary>560. Subarray Sum Equals K</summary>
+<summary>0560. Subarray Sum Equals K</summary>
 
 - prefix sumの出現回数をhashmapで管理すると、全区間を列挙するO(n^2)ではなくO(n)で数えられる
 - 累積和配列を作って後から処理するより、走査しながら過去のprefix sumを数える方がシンプルに書ける
@@ -157,8 +154,9 @@
 - パフォーマンス不足はデータ量が増えたときに実行時間やメモリ使用量として現れるため、O(n^2)からO(n)への改善は実務でも効く
 
 </details>
+
 <details>
-<summary>200. Number of Islands</summary>
+<summary>0200. Number of Islands</summary>
 
 - DFSでは再帰でも書けるが、探索が深い場合はコールスタックの上限に注意が必要
 - 明示的なstackを使うと再帰を避けられ、深い探索でも扱いやすい
@@ -176,7 +174,7 @@
 </details>
 
 <details>
-<summary>695. Max Area of Island</summary>
+<summary>0695. Max Area of Island</summary>
 
 - 島の最大面積も、グリッド上の連結成分をDFS/BFSで探索して各成分のサイズを数えればよい
 - stackやqueueに同じマスを重複して積みたくない場合、`seen`は「処理済み」ではなく「発見済み」として、stack/queueに入れるタイミングで更新する
@@ -187,7 +185,28 @@
 </details>
 
 <details>
-<summary>127. Word Ladder</summary>
+<summary>0323. Number of Connected Components in an Undirected Graph</summary>
+
+- Union-Find
+    - 連結成分数を求める典型問題。経路圧縮 + (rank or size) ヒューリスティック
+- 経路圧縮 (path compression)
+    - 再帰中に `self.parents[i] = self.find(self.parents[i])` で経路上のノードをすべて根に付け替える
+    - これだけで find が将来的にほぼ O(1) になる
+- Union by Rank vs Union by Size
+    - **Rank**: 木の高さの**上界**。経路圧縮後は実際の高さより大きくなることがある。**等しいランク同士を merge するときだけ +1**
+    - **Size**: 集合の**要素数**。merge のたびに相手のサイズを加える
+    - どちらも「小さい木を大きい木の下にぶら下げる」ことで平衡を保つ目的は同じ
+    - <https://en.wikipedia.org/wiki/Disjoint-set_data_structure#Union_by_size>
+- 連結成分数は `count` を持たせるのが速い
+    - 初期化時 `count = n`、`union` で実際に merge したときだけ `count -= 1`
+- DFS / BFS でも解ける
+    - 隣接リストを作って各未訪問ノードから探索 → 立ち上げた回数が連結成分数
+    - 計算量は O(V + E)
+
+</details>
+
+<details>
+<summary>0127. Word Ladder</summary>
 
 - 単語をノード、1文字だけ違う関係を辺と見ればグラフの最短経路問題として扱える
 - 全単語ペアを比較して隣接リストを作ると、前処理がO(N^2 L)になって遅い
@@ -199,8 +218,10 @@
 
 </details>
 
+## Tree, BST
+
 <details>
-<summary>104. Maximum Depth of Binary Tree</summary>
+<summary>0104. Maximum Depth of Binary Tree</summary>
 
 - 二分木の最大深さは、左右の部分木の最大深さを求めて大きい方に1を足すボトムアップ再帰で自然に書ける
 - トップダウン再帰では、現在の深さを引数で渡しながら全ノードをたどり、外側の`max_depth`を更新する
@@ -244,19 +265,19 @@
 </details>
 
 <details>
-<summary>111. Minimum Depth of Binary Tree</summary>
+<summary>0111. Minimum Depth of Binary Tree</summary>
 
 - 最小深さは根から浅い順に見るBFSと相性がよく、最初に見つけた葉の深さをそのまま返せる
 - DFSで解く場合は、全探索しながら最小値を更新するトップダウン再帰か、左右の部分木の答えを集約するボトムアップ再帰で考えられる
     - トップダウンは、現在の深さや根からの累積情報を引数で子へ配る
-    - ボトムアップは、書きやすい
+    - ボトムアップは、左右の部分木の答えを集約して返すだけなので短く書ける
 - 再帰DFSは木が深いとコールスタック上限に当たる可能性があるため、深い入力があり得るならBFSや明示的なstackも検討する
 - `None`だけを判定したい場合は、PEP 8やGoogle Python Style Guideの考え方に沿って`if node.left is None:`のように書く
 
 </details>
 
 <details>
-<summary>617. Merge Two Binary Trees</summary>
+<summary>0617. Merge Two Binary Trees</summary>
 
 - `copy.copy`は浅いコピーなので、親ノードだけが新しくなり、`left`や`right`の子孫ノードは元の木と共有される
 - `copy.deepcopy`は深いコピーなので、`left`や`right`からたどれる子孫ノードも再帰的に複製される
@@ -265,7 +286,15 @@
 </details>
 
 <details>
-<summary>112. Path Sum</summary>
+<summary>0108. Convert Sorted Array to Binary Search Tree</summary>
+
+- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
+- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
+
+</details>
+
+<details>
+<summary>0112. Path Sum</summary>
 
 - 問題自体は再帰で素直に解ける
 - パスを返す/数える発展
@@ -274,15 +303,8 @@
 
 </details>
 
-<summary>108. Convert Sorted Array to Binary Search Tree</summary>
-
-- ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
-- スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
-
-</details>
-
 <details>
-<summary>102. Binary Tree Level Order Traversal</summary>
+<summary>0102. Binary Tree Level Order Traversal</summary>
 
 複数の解法が考えられる。
 
@@ -296,7 +318,7 @@
     - `level`を引数で渡し、`level_order[level]`に値を直接appendする
     - 時間計算量: O(n)
     - 空間計算量: 結果のO(n) + 再帰スタックのO(h)
-    - 短く書けるが、深い木ではPythonの`sys.setrecursionlimit`に当たる/Cスタックを破壊するリスクがある
+    - 短く書けるが、深い木ではPythonの再帰上限（`sys.setrecursionlimit`で設定される値）に当たる/Cスタックを破壊するリスクがある
 
 - 行きがけDFS反復（明示stack）
     - 上を明示スタックに書き直したもの。`deque.pop()`でDFS
@@ -313,7 +335,7 @@
     - 最短深さや「最初に条件を満たす階層」を返したい派生問題にも素直に拡張できる
 
 - 例外処理は「if-elseで両方の場合を書く」より「ifで例外だけ早期returnし、本流のロジックを後ろにフラットに書く」のが読みやすいことがある
-- 再帰の上限はPythonでは`sys.setrecursionlimit`が言語処理系側でガードする。Javaのスタックは~1MB、Cは~10MBが目安
+- 再帰の上限はPythonでは`sys.setrecursionlimit`で設定された値を言語処理系側でガードする。Javaのスタックは~1MB、Cは~10MBが目安
 - 再帰は「ある条件のときだけログを出して呼び出し元を追う」のが難しい。ループに直すとデバッグしやすい
 - クイックソートで小さい方を再帰、大きい方を末尾再帰で処理するのも、スタック深さ抑制のため
 <summary>108. Convert Sorted Array to Binary Search Tree</summary>
@@ -321,9 +343,10 @@
 - ソート済み配列の中央を根にして、左右の半分から部分木を再帰的に作るのが一番素直
 - スライス `nums[:idx]`, `nums[idx+1:]` で書くとシンプルだが、コピーが発生するため空間計算量がO(n log n)になる
 
+</details>
 
 <details>
-<summary>103. Binary Tree Zigzag Level Order Traversal</summary>
+<summary>0103. Binary Tree Zigzag Level Order Traversal</summary>
 
 - 102（level order）に「奇数段だけ向きを反転」を足した派生問題と捉えると、102のBFS解にreverseを1行足すだけで済む
 - リストを「逆順」に扱う方法は用途で選ぶ
@@ -335,7 +358,42 @@
 </details>
 
 <details>
-<summary>300. Longest Increasing Subsequence</summary>
+<summary>0098. Validate Binary Search Tree</summary>
+
+- 木の探索順（preorder, inorder, postorder）
+- 再帰とループの変換
+- ロジックの流暢さ
+
+</details>
+
+## Dynamic Programming
+
+<details>
+<summary>0276. Paint Fence</summary>
+
+- 2 状態 DP
+- 状態に畳む書き方
+    - フィボナッチと同型の線形漸化式
+- `functools.lru_cache` の実装メモ
+    - **dict + doubly linked list** で挿入 / 削除 / 参照すべて O(1)
+    - 公式実装はスレッドセーフ（内部でロック）: <https://docs.python.org/3/library/functools.html#functools.lru_cache>
+    - キーは引数の tuple。`**kwargs` を含めるには辞書順ソートなど一意化の工夫が要る
+
+</details>
+
+<summary>0105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
+
+- preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
+- 改善: inorderの「値 → index」辞書を前計算してO(1)で根の位置を引き、再帰には「配列の範囲（左端 + 子の数、もしくは左端・右端）」を渡してスライスを避けると、時間O(n)・追加空間O(n)になる
+- 別解として、inorderの順番でノードを生成し、stackに「.rightが未確定のノード」を積んでいく構築法もある
+    - inorderで自分より前にあり、preorderで自分より後にあるノードを.leftにまとめて回収する
+    - 親が先にstackに入る性質を使い、自分よりpreorder順で前のノードまでpopして.leftに連結する
+    - 思いつくのは難しい
+
+</details>
+
+<details>
+<summary>0300. Longest Increasing Subsequence</summary>
 
 - 愚直DPだと計算量 O(n^2)
 - 二分探索でも解ける O(n log n)
@@ -352,7 +410,7 @@
 </details>
 
 <details>
-<summary>53. Maximum Subarray</summary>
+<summary>0053. Maximum Subarray</summary>
 
 - 「ある位置 `i` を末尾とする部分配列の最大和」を順に求めれば、その全体の最大が答えになる、という発想で O(n) になる
 - 同じことを2通りの式で書ける（どちらも O(n)、空間 O(1)）
@@ -364,7 +422,7 @@
 </details>
 
 <details>
-<summary>62. Unique Paths</summary>
+<summary>0062. Unique Paths</summary>
 
 - メモ化再帰で`functools.cache` を使うと再帰関数のメモ化を1行で書ける
 - Python のリスト掛け算
@@ -375,9 +433,8 @@
 
 </details>
 
-
 <details>
-<summary>63. Unique Paths II</summary>
+<summary>0063. Unique Paths II</summary>
 
 - 配る DPと もらう DP
   - もらう DP: `dp[r][c]` を「自分が上 / 左から受け取る値」で計算する（一般的）
@@ -386,29 +443,22 @@
   - C / Rust などのコンパイラ言語では、分岐予測失敗で命令パイプラインのやり直しが発生するため、`for` の中の `if` はなるべく減らす方が速い
   - 「0 行目／0 列目だけの特殊処理」など事前に決まっている分岐は、ループの外に出して別ループで処理した方が、可読性も速度も向上する
   - Python はインタプリタ実行で元から大量の分岐命令を踏むので、ここを気にしても差は出にくい（可読性の観点では分けてもよい）
-<summary>105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
-
-- preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
-- 改善: inorderの「値 → index」辞書を前計算してO(1)で根の位置を引き、再帰には「配列の範囲（左端 + 子の数、もしくは左端・右端）」を渡してスライスを避けると、時間O(n)・追加空間O(n)になる
-- 別解として、inorderの順番でノードを生成し、stackに「.rightが未確定のノード」を積んでいく構築法もある
-    - inorderで自分より前にあり、preorderで自分より後にあるノードを.leftにまとめて回収する
-    - 親が先にstackに入る性質を使い、自分よりpreorder順で前のノードまでpopして.leftに連結する
-    - 思いつくのは難しい
 
 </details>
 
 <details>
-<summary>198. House Robber</summary>
+<summary>0198. House Robber</summary>
 
 - DP配列のメモリは O(n) → O(1) に落とせる
 - 変数の意味はコメントで明示すると読みやすい
 - メモ化再帰は `@functools.cache` を使うと1行で書ける
 - `functools.lru_cache` / `functools.cache` のキャッシュはスレッドセーフ
     - 内部でロックを取っているので、複数スレッドから同じ関数を実行してもキャッシュ自体の状態は壊れない
+
 </details>
 
 <details>
-<summary>213. House Robber II</summary>
+<summary>0213. House Robber II</summary>
 
 - 円環の制約は「場合分けで消す」ことで直線版に帰着できる
     - 思考の型: 「未知のものは何か」「与えられているものは何か」「条件は何か」を整理し、厄介な条件を場合分けで消せないか考える
@@ -422,19 +472,20 @@
 - `functools.reduce` で副作用のない関数型スタイルに置き換えられる
     - `reduce(func, iterable, initial)` は他言語でいう `fold_left` と同じで、状態を引数として持ち回り再代入を消せる
     - 可読性は落ちる代わり、ループ内の代入による副作用が無くなり、状態遷移を関数として切り出せる
-- `itertools.islice` でスライスのコピーを避ける（`sol2.py`）
+- `itertools.islice` でスライスのコピーを避ける
     - 新しいリストを作る場合 O(k) のコピーが発生する
     - `itertools.islice(nums, 1, len(nums))` は元のリストをコピーせず遅延評価のイテレータを返すので、メモリも時間も節約できる
     - 引数として一度走査するだけで済むようなケースでは、スライスより `islice` が向いている
 - list slice の計算量
     - `nums[a:b]` は要素 `b - a` 個ぶんの新しいリストを作るため O(b - a) の時間と空間がかかる
     - <https://wiki.python.org/moin/TimeComplexity> に基本演算の計算量がまとまっている
+
 </details>
 
 <details>
-<summary>121. Best Time to Buy and Sell Stock</summary>
+<summary>0121. Best Time to Buy and Sell Stock</summary>
 
-- `itertools.accumulate(prices, min)` で「その日までの最小値」を遅延列として作れる（`sol3.py`）
+- `itertools.accumulate(prices, min)` で「その日までの最小値」を遅延列として作れる
     - Haskell の `scanl1 min` 相当。関数型風に「最小列 → 利益列 → max」と書ける
     - <https://docs.python.org/ja/3/library/itertools.html#itertools.accumulate>
     - 同じ問題を「scanl で累積最小、zipWith (-) で利益、max で集約」と分解できる
@@ -444,15 +495,18 @@
 - 型ヒント
     - Python 3.9+ では `typing.List[int]` より組み込みの `list[int]` が推奨
     - 引数はより抽象的な型（`Sequence`, `Iterable`）、返り値はより具体的な型（`list[int]`）にすると、呼び出し側の自由度を上げつつ、利用側に確かな情報を返せる
+
 </details>
 
 <details>
-<summary>122. Best Time to Buy and Sell Stock II</summary>
+<summary>0122. Best Time to Buy and Sell Stock II</summary>
+
 - 答えは \( \sum_{k=1}^{n-1}\max(0, p_k - p_{k-1}) \) と書ける
+
 </details>
 
 <details>
-<summary>139. Word Break</summary>
+<summary>0139. Word Break</summary>
 
 - `s[start:].startswith(word)` のようなスライスは、毎回新しい文字列オブジェクトを生成する O(n−start) のコピー が発生する。代わりに `s.startswith(word, start)` を使えば追加メモリなしで比較できる。同様に `s[start:end] == word` よりも `s.startswith(word, start)` の方が速い。
 - `str.startswith` は tuple を受け取れる
@@ -469,7 +523,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 </details>
 
 <details>
-<summary>322. Coin Change</summary>
+<summary>0322. Coin Change</summary>
 
 - `math.isinf`を用いた判定
 - `min` を取るときの工夫
@@ -478,8 +532,10 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 
 </details>
 
+## Binary Search
+
 <details>
-<summary>35. Search Insert Position</summary>
+<summary>0035. Search Insert Position</summary>
 
 - 標準ライブラリで一発: `bisect.bisect_left(nums, target)` と等価な問題
 - 区間の取り方を最初に決める
@@ -488,7 +544,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
         - ループ条件: `left < right`
         - ループ不変条件: `i < left ⇒ nums[i] < target` かつ `j >= right ⇒ nums[j] >= target`
         - 終了時 `left == right` で、これが「最初に `True` の位置」 = 答え
-    - 閉区間 `[left, right]`（`sol2.py`）は `right = len(nums) - 1` から始まり、`right - left > 1` で抜けて末尾を別途見るなど、境界処理が増える
+    - 閉区間 `[left, right]`は `right = len(nums) - 1` から始まり、`right - left > 1` で抜けて末尾を別途見るなど、境界処理が増える
 - `+1` がどこに入るか（半開区間 `[left, right)` の場合）
     - **`nums[mid] < target` のとき**（右に狭める）
         - `mid` は確定で `False` 側 → 次の区間に**含めたくない**
@@ -513,9 +569,8 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 
 </details>
 
-
 <details>
-<summary>153. Find Minimum in Rotated Sorted Array</summary>
+<summary>0153. Find Minimum in Rotated Sorted Array</summary>
 
 - ループ不変条件を「`i < left` なら `nums[i]` 側は `False`、`i >= right` なら `nums[i]` 側は `True`」と置くと、終了時 `left == right` のとき「`True` になる最も左の index」が得られる
 - このとき更新式は、`nums[middle]` が `False` 側なら `left = middle + 1` となる
@@ -523,12 +578,11 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 </details>
 
 <details>
-<summary>33. Search in Rotated Sorted Array</summary>
+<summary>0033. Search in Rotated Sorted Array</summary>
 
 - 評価関数の工夫
 
 </details>
-
 
 <details>
 <summary>1011. Capacity To Ship Packages Within D Days</summary>
@@ -537,8 +591,10 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 
 </details>
 
+## Recursion
+
 <details>
-<summary>50. Pow(x, n)</summary>
+<summary>0050. Pow(x, n)</summary>
 
 - 高速冪乗 (binary exponentiation)
     - 指数を2進展開し、立っているビットの位置だけ「累積二乗した底」を結果に掛け合わせれば O(log n) で計算できる
@@ -551,7 +607,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
     - 符号 / 指数 / 仮数 の bit 数
         - 単精度 (float):  32 bit = 1 / **8** / 23
         - 倍精度 (double): 64 bit = 1 / **11** / 52
-    - 指数部の `8` と `11` を覚えておくと、復元
+    - 指数部の `8` bit と `11` bit を覚えておくと、bias や仮数部の bit 数も差し引きで復元できる
     - 特殊値: `1/0` が `inf`、`0/0` が `NaN` などもIEEE-754の規定
 - Python の `int` と `float`
     - **`int` は任意精度 (arbitrary-precision / bignum)** で、ビット数の上限はない（メモリが許す限り桁を増やせる）
@@ -563,7 +619,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
         - これは「整数の値そのもの」ではなく「文字列変換の桁数」に対する制限である
 - 末尾再帰と Trampoline
     - `myPowHelper(base, exp, acc)` のように累積引数 `acc` を持たせれば末尾再帰の形に書ける
-    - C/Scheme のような末尾再帰最適化 (TCO) があれば定数スタックで動くが、**Pythonは TCO を実装していない**ので、そのままだと深い再帰でスタック
+    - C/Scheme のような末尾再帰最適化 (TCO) があれば定数スタックで動くが、**Pythonは TCO を実装していない**ので、そのままだと深い再帰でスタックオーバーフローになる
         - <https://docs.python.org/3.15/whatsnew/3.14.html#whatsnew314-tail-call>
     - 代わりに **Trampoline** という手法でループへ展開できる
         - <https://note.com/_ikb_/n/nc67f3e541f20>
@@ -578,12 +634,12 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 </details>
 
 <details>
-<summary>779. K-th Symbol in Grammar</summary>
+<summary>0779. K-th Symbol in Grammar</summary>
 
 - 出力は **n に依存しない**
     - 反復版を眺めると、操作は `half_length` で割っていくだけで、結果に効くのは flip の総数の偶奇のみ
     - つまり答えは「**`k - 1` の 2 進表記に立っている 1 の個数 (popcount) の偶奇**」
-- 組み込み `int.bit_count()` で 1 行になる (`sol3.py`)
+- 組み込み `int.bit_count()` で 1 行になる
     - `(k - 1).bit_count() % 2`
     - <https://docs.python.org/ja/3/library/stdtypes.html#int.bit_count>
 - ビット数を数える操作の用語整理
@@ -600,7 +656,17 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 </details>
 
 <details>
-<summary>3. Longest Substring Without Repeating Characters</summary>
+<summary>0776. Split BST</summary>
+
+- BST の不変条件をそのまま使う再帰
+- 再帰とループの中間表現
+
+</details>
+
+## Sliding Window
+
+<details>
+<summary>0003. Longest Substring Without Repeating Characters</summary>
 
 - **sliding window (スライディングウィンドウ)**
     - 線形シーケンスに対し「窓 (window) = 連続区間 `[left, right]`」を左から右へ滑らせて答えを更新する設計パターンの総称
@@ -617,9 +683,8 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 
 </details>
 
-
 <details>
-<summary>209. Minimum Size Subarray Sum</summary>
+<summary>0209. Minimum Size Subarray Sum</summary>
 
 - 可変長 sliding window (尺取法)
     - 「右端 `right` を 1 つ広げる → 条件を満たすまで左端 `left` を縮める」で各窓の最短性を保つ
@@ -631,8 +696,10 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 
 </details>
 
+## Greedy + Backtracking
+
 <details>
-<summary>46. Permutations</summary>
+<summary>0046. Permutations</summary>
 
 - **next permutation アルゴリズム**
     - 辞書順で「ある順列の次の順列」を O(N) で求める
@@ -640,7 +707,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
         1. 末尾から見て、はじめて `a[i] < a[i+1]` となる位置を見つけ、`pivot = i` とする（無ければ最後の順列）
         2. 末尾から見て、はじめて `a[j] > a[pivot]` となる `j` を見つけて swap
         3. `a[pivot+1:]` を反転（元は降順なので反転で昇順 = 最小化）する
-    - ソート済み配列から始めて、これを `False` が返るまで繰り返せば全順列を辞書順で列挙できる
+    - ソート済み配列から始めて、next permutation 操作が `False` を返すまで繰り返せば全順列を辞書順で列挙できる
     - 空間 O(1) で動く（出力を除く）
 - **バックトラック**
     - 「探索中に一時的に状態を変更し、再帰から戻るときに必ず元に戻す DFS」
@@ -655,7 +722,7 @@ s.startswith(("apple", "pen"))  # どれかで始まれば True
 </details>
 
 <details>
-<summary>78. Subsets</summary>
+<summary>0078. Subsets</summary>
 
 - バックトラック再帰
 - Iterative doubling
@@ -683,7 +750,7 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
 </details>
 
 <details>
-<summary>39. Combination Sum</summary>
+<summary>0039. Combination Sum</summary>
 
 - 同じ要素を何度でも使ってよい問題なので、再帰呼び出しで渡す index は `i + 1` ではなく `i`(自分自身も再利用可)
 - **バックトラック (in-place) vs 中間リスト生成**
@@ -696,7 +763,7 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
 </details>
 
 <details>
-<summary>22. Generate Parentheses</summary>
+<summary>0022. Generate Parentheses</summary>
 
 - 答えの個数は カタラン数 \( C_n = \frac{1}{n+1}\binom{2n}{n} \sim \frac{4^n}{n^{3/2}\sqrt{\pi}} \)
     - 出力サイズ自体が \( O(n \cdot C_n) \) なので、どの解法も最低この計算量はかかる
@@ -715,8 +782,10 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
 
 </details>
 
+## Others
+
 <details>
-<summary>283. Move Zeroes</summary>
+<summary>0283. Move Zeroes</summary>
 
 - **Erase–remove idiom**
     - 「削除条件に合うものを末尾に寄せる (remove) → まとめて切り捨てる (erase)」を分けて考えるイディオム
@@ -733,11 +802,86 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
 </details>
 
 <details>
-<summary>392. Is Subsequence</summary>
+<summary>0252. Meeting Rooms</summary>
+
+- ソート + 隣接区間の比較
+    - `itertools.pairwise`を使うと隣接ペアを綺麗にイテレートできる: <https://docs.python.org/3/library/itertools.html#itertools.pairwise>
+- いもす法 (Imos method)
+    - 区間 `[s, e)` に対して `diff[s] += 1`, `diff[e] -= 1` の**差分配列**を作る
+    - 累積和を取ると、各時刻における「同時並行している区間の数」が得られる
+    - 衝突 = ある時刻で累積和が 2 以上
+    - 値域が大きい / 疎なら **座標圧縮**（`time_to_rank`）と組み合わせて O(n log n)
+
+</details>
+
+<details>
+<summary>0253. Meeting Rooms II</summary>
+
+- 必要な会議室数 = 任意の時刻に同時並行している区間の最大数
+- いもす法 + 座標圧縮
+    - 252 のいもす法をそのまま流用し、累積和の 最大値 を取るように変えるだけ
+    - 値域が疎なので時刻を rank 化（座標圧縮）
+- start と end は分けて持って良い
+- `(time, ±1)` のイベントソート
+- min-heap で部屋を再利用する
+    - 開始時刻でソートし、各会議に対して
+        - heap (= 使用中の部屋の終了時刻) の最小値が現 start 以下なら pop（部屋を解放）
+        - 現会議の end を push
+    - 最終的な heap サイズ = 必要な部屋数
+    - 「受付が郵便箱の鍵を回収しつつ新しい鍵を渡す」
+    - 全体 O(n log n)
+
+</details>
+
+<details>
+<summary>0392. Is Subsequence</summary>
 
 - 正規表現
     - `pattern = ".*" + ".*".join(re.escape(c) for c in s)` のように書くのが素直
     - `re.escape` を忘れると `s` に `.` / `*` / `+` などが混ざった入力で誤動作する
     - 正規表現エンジンはバックトラッキング型だと最悪指数。`.*` の連続は遅くなりやすく、線形時間が保証されているわけではない
+
+</details>
+
+<details>
+<summary>0031. Next Permutation</summary>
+
+- 配列のスライスはコピーを作る
+    - `nums[k:].sort()` は スライスのコピーをその場でソートして捨てるだけで、元の `nums` は変わらない
+- `sorted` ではなく `reversed` で十分
+- C++ `std::next_permutation`
+    - Python より簡潔: <https://en.cppreference.com/w/cpp/algorithm/next_permutation>
+
+</details>
+
+<details>
+<summary>0008. String to Integer (atoi)</summary>
+
+- 32 bit overflow を意識した実装
+    - Python の `int` は任意精度なので overflow しないが、C/Java の 32 bit int を想定して、桁を足す前に判定する
+    - `abs_value > INT_MAX // 10` または `abs_value == INT_MAX // 10 and digit > INT_MAX % 10` で「次に `*10 + digit` をしたら超過する」かを検査できる
+    - 2 の補数の非対称性 `INT_MIN = -INT_MAX - 1` が頭にあると、絶対値で扱った後に sign を掛けるアプローチでも負側の境界をきれいに扱える
+- `int()` は符号もパースする
+    - `int("-42")` / `int("+42")` がそのまま動く: <https://docs.python.org/3/library/functions.html#int>
+- `str.isdigit` / `str.isdecimal` / `str.isnumeric` の違い
+    - **`isdecimal`** ⊂ **`isdigit`** ⊂ **`isnumeric`**
+    - `isdecimal`: Unicode の `Nd`（10 進数字）。半角の `0-9` だけでなく**全角 `１`** も `True`
+    - `isdigit`: 上に加えて上付き `²` など
+    - `isnumeric`: 上に加えて `⅕`（分数）、`Ⅷ`（ローマ数字）など
+    - 半角 0-9 だけ判定したいなら `c.isascii() and c.isdigit()` か `"0" <= c <= "9"` が確実
+
+</details>
+
+<details>
+<summary>0006. Zigzag Conversion</summary>
+
+- flatten の書き方
+    - `"".join("".join(row) for row in zigzag)` よりも `"".join(c for row in zigzag for c in row)` の方が中間文字列を作らない
+- `itertools.batched` (Python 3.12+)
+    - 一定サイズずつ chunk に分けるのに使える: <https://docs.python.org/ja/3/library/itertools.html#itertools.batched>
+- **Rope データ構造**
+    - 文字列を chunk に分割して二分木で持つことで、前後への append / prepend / split / concat を高速化できる
+    - Java / Python のように文字列が immutable な言語で、前後操作が頻繁なケースで有効
+    - <https://blog1.mammb.com/entry/2025/11/22/000000>
 
 </details>
