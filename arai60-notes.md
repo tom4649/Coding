@@ -380,7 +380,7 @@
     - キーは引数の tuple。`**kwargs` を含めるには辞書順ソートなど一意化の工夫が要る
 
 </details>
-
+<details>
 <summary>0105. Construct Binary Tree from Preorder and Inorder Traversal</summary>
 
 - preorderの先頭が根、inorderで根の位置がわかれば左右の部分木のサイズが決まる、という性質をそのまま再帰に落とせる
