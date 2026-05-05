@@ -1,5 +1,7 @@
 # [Glind75](https://leetcode.com/problem-list/rab78cw1/)で学んだことのメモ
 
+Arai60と重複しているものは除く
+
 ## String
 
 <details>
