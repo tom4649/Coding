@@ -28,3 +28,11 @@ Arai60と重複しているものは除く
 - `copy.deepcopy` でも解けるが、内部で同様のメモ化付き再帰トラバーサルを行っており、汎用性のための型チェック・pickle プロトコルのオーバーヘッドがある
 </details>
 
+
+<details>
+<summary>0383. Ransom Note</summary>
+
+- hashtableを使う
+- 制約をよく見る
+
+</details>
