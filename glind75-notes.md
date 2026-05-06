@@ -2,7 +2,6 @@
 
 Arai60と重複しているものは除く
 
-## String
 
 <details>
 <summary>0005. Longest Palindromic Substring</summary>
@@ -16,5 +15,16 @@ Arai60と重複しているものは除く
     - 保証済み半径の外側だけを実際に比較するため、`while`がネストしていても全体ではO(n)
 - 関数を切り出すときは、読む人が何に興味があるかを考える
 
+</details>
+
+
+<details>
+<summary>0133. Clone Graph</summary>
+
+- グラフのクローンは hashmap（`original → copy`）+ グラフ探索（DFS/BFS）で解く
+- hashmap がサイクル検出と cloneノードの参照の両方を兼ねる
+- ノードを hashmap に登録するタイミングは、neighbors を処理する**前**（後にすると再帰・ループで同じノードを二重処理してしまう）
+- `dict.get(key, default)` はデフォルト値を**常に評価**するため、`Node(...)` のような生成コストがある場合は `if key not in dict` で分岐するほうがよい
+- `copy.deepcopy` でも解けるが、内部で同様のメモ化付き再帰トラバーサルを行っており、汎用性のための型チェック・pickle プロトコルのオーバーヘッドがある
 </details>
 
