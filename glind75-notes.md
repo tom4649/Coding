@@ -42,6 +42,9 @@ Arai60と重複しているものは除く
 <details>
 <summary>0011. Container With Most Water</summary>
 
+- two-pointers の変数のペアリングとしては [start, end) または [first, last] といったものが一般的か。end は含まれず last は含む
+- math.infの方がfloat("inf")より自然か
+- min-heapをmax-heapとして使う場合、コメントが必要か
 - 両端ポインタ, bisect, セグメント木, ヒープと複数の視点からアプローチできる。自分の引き出しの少なさを自覚
 
 </details>
