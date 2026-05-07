@@ -1,8 +1,5 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        if len(height) < 2:
-            return 0
-
         start = 0
         last = len(height) - 1
         max_area = 0
