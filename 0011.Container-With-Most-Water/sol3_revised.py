@@ -1,4 +1,5 @@
 import heapq
+import math
 
 
 class Solution:
@@ -8,8 +9,8 @@ class Solution:
         heapq.heapify(neg_height_index_pairs)
 
         max_amount = 0
-        min_pos = float("inf")
-        max_pos = float("-inf")
+        min_pos = math.inf
+        max_pos = -math.inf
 
         while neg_height_index_pairs:
             neg_h, i = heapq.heappop(neg_height_index_pairs)
