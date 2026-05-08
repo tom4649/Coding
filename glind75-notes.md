@@ -31,6 +31,15 @@ Arai60と重複しているものは除く
 
 
 <details>
+<summary>0015. 3Sum</summary>
+
+- uniqueな解をどうやって得るか
+- whileの重複スキップ: 一致が見つかって `start++` した後に同じ値を飛ばす
+
+</details>
+
+
+<details>
 <summary>0383. Ransom Note</summary>
 
 - hashtableを使う
