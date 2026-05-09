@@ -75,3 +75,15 @@ Arai60と重複しているものは除く
 
 </details>
 
+
+<details>
+<summary>0017. Letter Combinations of a Phone Number</summary>
+
+- バックトラックを最初の選択肢に
+    - 全列挙・組み合わせ系の問題（Subsets, Permutations, Combination Sum, Generate Parentheses）と同じ骨格なので、バックトラック（再帰 + `current` の使い回し）を最初に検討すべきだった
+    - イテレーティブ DFS で解いた
+- 文字列の構築は `list` + `"".join()` で行う
+    - Python の文字列は immutable なので `+=` で連結するたびに新しいオブジェクトを生成し O(n^2) になる
+    - `list` に `append` して最後に `"".join()` すれば O(n)
+
+</details>

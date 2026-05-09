@@ -761,7 +761,6 @@ results = itertools.chain(a, map(lambda s, v=value: s + [v], b))
     - <https://oeis.org/A000041>
 
 </details>
-
 <details>
 <summary>0022. Generate Parentheses</summary>
 
