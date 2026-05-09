@@ -65,3 +65,13 @@ Arai60と重複しているものは除く
 - slow を1ステップ、fast を2ステップ進めると、fast がリスト末尾に達したとき slow がちょうど中央を指す
 
 </details>
+
+
+<details>
+<summary>0994. Rotting Oranges</summary>
+
+- BFSが定石だと思うがDFSでも解ける
+- IntEnumを使うと自然
+
+</details>
+
