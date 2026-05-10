@@ -51,7 +51,7 @@ PR_URL=$(gh pr create \
   --base main \
   --head "$CURRENT_BRANCH" \
   --title "${CURRENT_PROBLEM_TITLE}" \
-  --body-file .github/pull_request_template.md)
+  --body "${CURRENT_PROBLEM_URL}")
 
 PR_NUMBER=$(echo "$PR_URL" | grep -o '[0-9]*$')
 
