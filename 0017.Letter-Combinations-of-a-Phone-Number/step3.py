@@ -19,14 +19,14 @@ class Solution:
             return []
         result = []
 
-        def generate_combinations_from(index, fixed):
+        def generate_combinations_from(index, combination):
             if index == len(digits):
-                result.append("".join(fixed))
+                result.append("".join(combination))
                 return
             for c in DIGIT_TO_CHARS[digits[index]]:
-                fixed.append(c)
-                generate_combinations_from(index + 1, fixed)
-                fixed.pop()
+                combination.append(c)
+                generate_combinations_from(index + 1, combination)
+                combination.pop()
 
         generate_combinations_from(0, [])
         return result
