@@ -87,3 +87,27 @@ Arai60と重複しているものは除く
     - `list` に `append` して最後に `"".join()` すれば O(n)
 
 </details>
+
+<details>
+<summary>0155. Min Stack</summary>
+- Monotonic Stack（単調スタック）
+    - スタック内の要素が常に単調増加 or 単調減少になるように維持するデータ構造
+    - このMin Stackの `min_data` は単調非増加スタックの一種
+    - 典型問題: Next Greater Element・ヒストグラムの最大面積・Trapping Rain Water など
+    - O(n^2) の全探索を O(n) に落とせる
+</details>
+
+
+<details>
+<summary>0496. Next Greater Element I</summary>
+
+- Monotonic Stack の定石パターン
+    - 「右（左）にある最初の大きい/小さい要素」という形の問題に使う
+    - 全探索 O(n1 * n2) → Monotonic Stack で O(n1 + n2) に落とせる
+- 思考の道筋
+    1. 全探索で考える → 同じ要素を何度も走査していると気づく
+    2. 視点を逆転：「各要素が答えを探す」→「**各要素が誰かの答えになれるか**」
+    3. 未解決の要素を `pending`（スタック）に積んでおき、大きい要素が来たら順次確定させる
+    4. スタック内は自然と**単調減少**になる（小さい要素は先に答えが確定してpopされるため）
+
+</details>
