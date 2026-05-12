@@ -111,3 +111,10 @@ Arai60と重複しているものは除く
     4. スタック内は自然と**単調減少**になる（小さい要素は先に答えが確定してpopされるため）
 
 </details>
+
+<details>
+<summary>0981. Time Based Key-Value Store</summary>
+
+- 二分探索によって満たされる条件に注意
+
+</details>
