@@ -10,18 +10,18 @@ class MinStack:
 
     def pop(self) -> None:
         if not self.data:
-            raise IndexError("pop from empty stack")
+            raise RuntimeError("pop from empty stack")
         self.data.pop()
         self.min_data.pop()
 
     def top(self) -> int:
         if not self.data:
-            raise IndexError("top from empty stack")
+            raise RuntimeError("top from empty stack")
         return self.data[-1]
 
     def getMin(self) -> int:
         if not self.min_data:
-            raise IndexError("getMin from empty stack")
+            raise RuntimeError("getMin from empty stack")
         return self.min_data[-1]
 
 
