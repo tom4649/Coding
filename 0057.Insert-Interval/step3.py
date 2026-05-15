@@ -17,7 +17,7 @@ class Solution:
             new_start = min(new_start, starts[merge_start])
             new_end = max(new_end, ends[merge_end - 1])
 
-        return intervals[:merge_start] + [[new_start, new_end]] + intervals[new_end:]
+        return intervals[:merge_start] + [[new_start, new_end]] + intervals[merge_end:]
 
 
 class Solution:
