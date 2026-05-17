@@ -1,4 +1,3 @@
-
 // Definition for singly-linked list.
 #include <unordered_set>
 
@@ -9,11 +8,11 @@ struct ListNode {
 };
 
 class Solution {
-   public:
+public:
     bool hasCycle(ListNode *head) {
         std::unordered_set<ListNode *> seen;
-        for (ListNode* node=head;node!=nullptr;node=node->next){
-            if(seen.count(node)){
+        for (ListNode *node = head; node != nullptr; node = node->next) {
+            if (seen.count(node)) {
                 return true;
             }
             seen.insert(node);
@@ -21,4 +20,3 @@ class Solution {
         return false;
     }
 };
-
