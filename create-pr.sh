@@ -6,7 +6,7 @@
 # 前提: 既にブランチが作成されており、そのブランチで作業中であること
 
 CURRENT_PROBLEM_URL=$1
-PROBLEM_NUMBER=$2
+LANGUAGE=${2:-Python}
 
 if [ -z "$CURRENT_PROBLEM_URL" ]; then
   echo "使用方法: ./create-pr.sh <現在の問題URL>  [Arai60通し番号]"
@@ -59,11 +59,7 @@ git restore .github/pull_request_template.md
 echo "PR作成完了！ ${PR_URL}"
 
 # レビュー依頼コメントを生成
-if [ -n "$PROBLEM_NUMBER" ]; then
-  TITLE_LINE="${PROBLEM_NUMBER}. ${CURRENT_PROBLEM_TITLE}"
-else
-  TITLE_LINE="${CURRENT_PROBLEM_TITLE}"
-fi
+TITLE_LINE="${CURRENT_PROBLEM_TITLE}"
 
 echo ""
 echo "=== レビュー依頼コメント (コピー用) ====================="
@@ -73,6 +69,6 @@ ${TITLE_LINE}に取り組みました。
 お手隙の際にレビューをお願いいたします。
 問題: ${CURRENT_PROBLEM_URL}
 PR: ${PR_URL}
-言語: Python3
+言語: ${LANGUAGE}
 EOF
 echo "========================================================="
