@@ -1,0 +1,23 @@
+# 349. Intersection of Two Arrays
+
+- [リンク](https://leetcode.com/problems/intersection-of-two-arrays/description/)
+- 愚直にsol1を書いた。悪くはないと思う。O(l1 + l2)
+- https://github.com/mamo3gr/arai60/blob/main/349_intersection-of-two-arrays/memo.md
+    - setの共通部分を取れば一行
+    - set.intersection(iterable)のset側が短い方が良い
+    - 「公式にはエラーの起こりにくさと読みやすさの観点から&よりintersectionが推奨されていますね」らしい
+- 長い方(l1とする)がソート済みの場合、O(l2 logl1)
+- マージソートぽい解答
+    - 真似して書いてみる（sol3）
+    - 実行時間は上とほぼ同じ。組み込みのソートは高速ということなんだろう
+    - https://github.com/tarinaihitori/leetcode/pull/13#discussion_r1827026532
+    - https://github.com/mamo3gr/arai60/blob/main/349_intersection-of-two-arrays/step2.py
+
+### 解き直し
+解けた
+
+sol2.pyでは短い方をsetにしていた: 空間計算量（と定数倍の時間計算量）を小さくできるため
+
+> そうですね。この問題は問題文自体では終わっていなくて、解けた後に、いくつか追加の条件が出てきて、その下でのアルゴリズムとそれらの pros and cons が要求されると思います。
+
+
