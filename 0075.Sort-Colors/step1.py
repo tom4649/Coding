@@ -20,9 +20,11 @@ class Solution:
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
         """
-        Dutch National Flag: one pass, O(1) extra space.
+        Do not return anything, modify nums in-place instead.
         """
-        length_zero, i, length_two = 0, 0, 0
+        length_zero = 0
+        i = 0
+        length_two = 0
 
         while i <= len(nums) - 1 - length_two:
             if nums[i] == 0:

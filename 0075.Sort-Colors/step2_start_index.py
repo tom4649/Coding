@@ -1,7 +1,7 @@
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
         """
-        Dutch National Flag: one pass, O(1) extra space.
+        Do not return anything, modify nums in-place instead.
         """
         zero_start = 0  # i < zero_start -> nums[i] == 0
         one_start = 0  # i < one_start and i >= zero_start -> nums[i] == 0

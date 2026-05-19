@@ -10,6 +10,9 @@
 方針が立ったが、実装に時間がかかった。 2 を後ろにおくった時にまえに送られる値が 2 である可能性を考慮し忘れていた。15 mぐらい。
 
 ## step2
+背景：Dutch National Flag
+https://en.wikipedia.org/wiki/Dutch_national_flag_problem
+
 変数名を書き直したが、どうだろうか
 
 ### 他の人のコード
