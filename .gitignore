@@ -1,0 +1,7 @@
+.clangd
+compile_flags.txt
+.vscode
+.cache
+compile_commands.json
+.clang-format
+__pycache__
