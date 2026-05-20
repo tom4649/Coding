@@ -12,3 +12,9 @@
 tail:「今どこまで処理済みなのか」
 node:「次にどこを見ればいいのか」
 dummyを用いた番兵も自然に解釈できる
+
+## C++
+
+https://github.com/liruly/leetcode/pull/6/changes
+
+https://github.com/nicah4o/arai60/pull/4/changes
