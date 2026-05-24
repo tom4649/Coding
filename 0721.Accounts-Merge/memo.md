@@ -43,4 +43,11 @@ DFS: O(E+UlogU)
 
 UnionFind: O(E\alpha(N)+UlogU) \alpha: 逆アッカーマン関数
 
+## C++
+LLMのコードを写経する形になった。自分ではまだ書けない。
+
+- unionは共用体を表す予約語
+    - 共用体：すべてのメンバ変数が、メモリ上の同じ場所を共有する
+- std::setは赤黒木で管理されているので重複排除とソートを同時に行える
+    - https://ja.wikipedia.org/wiki/%E8%B5%A4%E9%BB%92%E6%9C%A8
 
