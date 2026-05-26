@@ -10,7 +10,7 @@ class Solution:
     def lowestCommonAncestor(
         self, root: TreeNode, p: TreeNode, q: TreeNode
     ) -> TreeNode:
-        node_to_depth_and_parent: dict[TreeNode, tuple(int, TreeNode | None)] = {}
+        node_to_depth_and_parent: dict[TreeNode, tuple[int, TreeNode | None]] = {}
 
         depth = 1
         frontier = [(root, None)]

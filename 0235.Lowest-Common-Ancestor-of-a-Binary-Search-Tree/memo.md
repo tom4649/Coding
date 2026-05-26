@@ -6,9 +6,13 @@ root: 'TreeNode'
 
 16mぐらい。BFSで探索し、親ノードを残しておく。
 
-元のコードにあった型をクォーテーションで囲むのは前方参照を解決するための、`from __future__ import annotation`以前の方法。TreeNodeのメソッドとして書くことを想定したのだろうか？
+（元のコードにあった型をクォーテーションで囲むのは前方参照を解決するための、`from __future__ import annotation`以前の方法らしい。TreeNodeのメソッドとして書くことを想定したのだろうか？）
 
-binary **search** treeであったことに解き終わってから気がついた。valを探索に使うことができる。そうなると「二つのvalの間にある、深さ最小のノード」が答えとなる
+binary **search** treeであったことに解き終わってから気がついた。valを探索に使うことができる。そうなると「二つのvalの間にある、深さ最小のノード」が答えとなる。
+
+注：この次の問題がBinary Treeを扱う
+
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envType=problem-list-v2&envId=rab78cw1
 
 ## 他の人のコードなど
 
