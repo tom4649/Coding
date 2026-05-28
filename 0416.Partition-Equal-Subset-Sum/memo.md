@@ -33,3 +33,14 @@ https://github.com/huyfififi/coding-challenges/pull/51
 ## step 3
 省略
 
+## 解き直し
+ナップザックの有名な派生問題である部分和問題。
+
+1. アイテム（選択の対象）： 配列の各数字 num（nums の中身）
+
+2. 容量（制限リソース）： 合計値の半分である total // 2（can_partition 配列の長さ）
+
+3. 価値（最適化の目標）： 「ぴったりその合計値を作れるか？」という True/False の判定
+
+空で書くと step3.py になった
+
