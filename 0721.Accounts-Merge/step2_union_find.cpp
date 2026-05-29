@@ -10,10 +10,8 @@ public:
     std::vector<int> parent;
     std::vector<int> size;
 
-    UnionFind(int n) {
-        parent.resize(n);
+    UnionFind(int n) : parent(n), size(n, 1) {
         std::iota(parent.begin(), parent.end(), 0);
-        size.assign(n, 1);
     }
 
     int find(int x) {
@@ -46,7 +44,6 @@ public:
     std::vector<std::vector<std::string>> accountsMerge(std::vector<std::vector<std::string>>& accounts) {
         UnionFind union_find(accounts.size());
         std::unordered_map<std::string, int> mail_to_account_index;
-        std::vector<std::vector<std::string>> accounts_merged;
 
         for (int account_index = 0; account_index < accounts.size(); ++account_index) {
             for (size_t i = 1; i < accounts[account_index].size(); ++i) {
@@ -67,7 +64,8 @@ public:
             }
         }
 
-        for (auto& [root, emails] : root_to_emails) {
+        std::vector<std::vector<std::string>> accounts_merged;
+        for (const auto& [root, emails] : root_to_emails) {
             std::set<std::string> unique_emails(emails.begin(), emails.end());
 
             std::vector<std::string> merged_row;
