@@ -10,17 +10,18 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists: list[ListNode | None]) -> ListNode | None:
-        # Include index i to avoid comparison collisions when node values are equal.
-        heap = [(node.val, i, node) for i, node in enumerate(lists) if node is not None]
+        ListNode.__lt__ = lambda self, other: self.val < other.val
+
+        heap = [node for node in lists if node is not None]
         heapq.heapify(heap)
 
         dummy = ListNode()
         node = dummy
         while heap:
-            val, i, head = heapq.heappop(heap)
-            node.next = ListNode(val)
+            head = heapq.heappop(heap)
+            node.next = ListNode(head.val)
             node = node.next
             if head.next is not None:
-                heapq.heappush(heap, (head.next.val, i, head.next))
+                heapq.heappush(heap, head.next)
 
         return dummy.next

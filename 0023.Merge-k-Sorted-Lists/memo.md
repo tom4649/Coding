@@ -26,6 +26,9 @@ heapq.heapify(heap)
 # TypeError: '<' not supported between instances of 'ListNode' and 'ListNode'
 ```
 
+### 追記
+ListNodeに__lt__メソッドを強制的に加えた実装を追加
+
 ## 他の人のコード
 
 https://github.com/shining-ai/leetcode/pull/67
