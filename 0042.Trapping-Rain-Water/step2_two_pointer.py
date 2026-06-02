@@ -6,15 +6,15 @@ class Solution:
         max_from_left = height[index_left]
         max_from_right = height[index_right]
 
-        water_trapped = 0
+        trapped_water = 0
         while index_left < index_right:
             if max_from_left <= max_from_right:
-                water_trapped += max_from_left - height[index_left]
+                trapped_water += max_from_left - height[index_left]
                 index_left += 1
                 max_from_left = max(max_from_left, height[index_left])
             else:
-                water_trapped += max_from_right - height[index_right]
+                trapped_water += max_from_right - height[index_right]
                 index_right -= 1
                 max_from_right = max(max_from_right, height[index_right])
 
-        return water_trapped
+        return trapped_water

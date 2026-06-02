@@ -9,8 +9,8 @@ class Solution:
         difference_max_left = [m - h for m, h in zip(max_from_left, height)]
         difference_max_right = [m - h for m, h in zip(max_from_right, height)]
 
-        water_trapped = 0
+        trapped_water = 0
         for left, right in zip(difference_max_left, difference_max_right):
-            water_trapped += min(left, right)
+            trapped_water += min(left, right)
 
-        return water_trapped
+        return trapped_water
