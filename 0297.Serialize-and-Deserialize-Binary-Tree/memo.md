@@ -66,4 +66,5 @@ https://github.com/shining-ai/leetcode/pull/62
 
 https://github.com/potrue/leetcode/pull/73
 
-
+## step3
+最も個人的に自然な pre-orderを書いておく
