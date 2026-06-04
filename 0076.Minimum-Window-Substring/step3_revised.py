@@ -7,7 +7,7 @@ class WindowInfo:
         self.right: int | None = None
         self.size: int | None = None
 
-    def update(self, left, right):
+    def update(self, left: int, right: int) -> None:
         self.left = left
         self.right = right
         self.size = right - left + 1
