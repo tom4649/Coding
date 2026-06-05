@@ -5,12 +5,16 @@ class WindowInfo:
     def __init__(self) -> None:
         self.left: int | None = None
         self.right: int | None = None
-        self.size: int | None = None
 
     def update(self, left: int, right: int) -> None:
         self.left = left
         self.right = right
-        self.size = right - left + 1
+
+    @property
+    def size(self) -> int | None:
+        if self.left is None or self.right is None:
+            return None
+        return self.right - self.left + 1
 
 
 class Solution:
