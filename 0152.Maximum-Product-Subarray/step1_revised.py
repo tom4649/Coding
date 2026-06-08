@@ -12,7 +12,7 @@ class Solution:
 
         def max_product_no_zero_between(begin: int, end: int) -> int | float:
             if begin >= end:
-                return float("-inf")
+                return -math.inf
             if end - begin == 1:
                 return nums[begin]
 
