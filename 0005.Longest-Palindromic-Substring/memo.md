@@ -8,7 +8,7 @@
 
 ### コメント集
 
-Manacher's algorithm: 知らなくて良い
+Manacher's algorithm (知らなくて良い)
 
 https://en.wikipedia.org/wiki/Longest_palindromic_substring#Runtime
 
@@ -34,4 +34,21 @@ https://snuke.hatenablog.com/entry/2014/12/02/235837
 
 https://github.com/huyfififi/coding-challenges/pull/56/changes#diff-88e4497fd99389071837affe590f79f66bd55501f7ad90eaa3a414101c7046b5
 二次元DPでも解ける。なるほど
+
 各判定O(1)なので合計計算量は O(n^2)
+
+### 解き直し
+
+中心から展開するアプローチが浮かびsol2_revisedとほぼ同じコードになった。
+
+何かアルゴリズムがあったと思いつつMancher（マンカー）のアルゴリズムを思い出せなかったのでもう一度書いておく。
+
+### 計算量
+sol5の関数名を用いて自然言語化する
+
+find_longest_on_centerのwhileループは、右端が広がる場合だけなのでアルゴリズム全体の合計でO(n)
+
+centerのfor文もO(n)
+
+結局合計O(n)
+
