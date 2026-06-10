@@ -11,11 +11,9 @@ hashmap + DFSを使った解法: sol1.py
 ### 他の人のコード
 https://github.com/huyfififi/coding-challenges/pull/32
 
-C++に関する記述は読んでいない。
-C++の練習も始めるのはありかもしれない。
 
 再帰でも書く: sol2_recursive.py
-スタックに入れるノードの数を一つにする
+スタックに入れるノードの数を一つにする: sol3.py
 
 deepcopyでも解けることに気が付く: sol4.py
 
@@ -25,4 +23,14 @@ https://github.com/python/cpython/blob/main/Lib/copy.py#L110
 
 deepcopyの実装
 atomicの場合にはそのまま返すこと、memoが使われていることを確認した
+
+### 解き直し
+
+つまるところはなかった。
+
+ユーザー定義のクラスインスタンスのハッシュが id に基づいて決まることを確認した。つまり、この問題では同じval, neighborsのインスタンスでもハッシュは異なる。
+
+https://docs.python.org/ja/dev/glossary.html#term-hashable
+
+> ユーザー定義のクラスのインスタンスであるようなオブジェクトはデフォルトでハッシュ可能です。 それらは全て (自身を除いて) 比較結果は非等価であり、ハッシュ値は id() より得られます。
 
