@@ -10,7 +10,7 @@ LeetCodeのヒント2を見る
 なるほど、これを見てやっとわかった: sol2.py
 
 つまり、
-ポインタ start, lastがあり、max_areaがstartとそれよりも左側、lastとそれよりも右側を端に持つ場合を含めた最大値を持つとする
+ポインタ start, lastがあり、max_areaがstartとそれよりも左側、lastとそれよりも右側を端に持つ場合を含めた最大値を持つとする。
 このとき、max_areaが更新されうるのは、min(height[start], height[last])が増加したときのみ
 
 時間計算量 O(n)
@@ -154,5 +154,7 @@ https://github.com/usatie/leetcode/commit/e5ab842a5819b4159feb7dff69f2d9d7450445
 
 heapでも解けるのか。自分の選択肢がいかに狭いかよくわかる
 これを書いてみる: sol3.py
+
 高さの大きい順に取り出していけば高さはその取り出した長さで確定するため最左と最右のindexを用いることができる
+
 時間計算量O(nlog n)
