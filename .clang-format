@@ -1,0 +1,23 @@
+---
+# LeetCode / 競プロ用 C++ の読みやすさ優先（LLVM ベース）
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+# ListNode *next のような「型側と * の間は空けない」書き方
+PointerAlignment: Right
+
+# void foo() { と K&R に寄せる
+BreakBeforeBraces: Attach
+
+# if ( cond ) に寄せる（LLVM 既定）
+SpaceBeforeParens: ControlStatements
+
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+SortIncludes: true
+IncludeBlocks: Preserve

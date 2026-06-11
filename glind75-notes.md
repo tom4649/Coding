@@ -37,3 +37,11 @@ Arai60と重複しているものは除く
 - 制約をよく見る
 
 </details>
+
+
+<details>
+<summary>0011. Container With Most Water</summary>
+
+- 両端ポインタ, bisect, セグメント木, ヒープと複数の視点からアプローチできる。自分の引き出しの少なさを自覚
+
+</details>

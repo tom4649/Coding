@@ -1,0 +1,10 @@
+# macOS Command Line Tools + libc++
+CompileFlags:
+  Add:
+    - -std=c++17
+    - -stdlib=libc++
+    - -isysroot
+    - /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+    - -isystem
+    - /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
+    - -resource-dir=/Library/Developer/CommandLineTools/usr/lib/clang/17
