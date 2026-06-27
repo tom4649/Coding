@@ -15,7 +15,7 @@ class Solution:
             # when the number of nodes is even, the middle node is the right half of the list
             slow = head
             fast = head
-            while fast and fast.next:
+            while fast is not None and fast.next is not None:
                 slow = slow.next
                 fast = fast.next.next
             return slow
