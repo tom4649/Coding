@@ -7,8 +7,8 @@ class ListNode:
 
 class Solution:
     def sortList(self, head: ListNode | None) -> ListNode | None:
-        if head is None:
-            return None
+        if head is None or head.next is None:
+            return head
 
         def merge(head1, head2, length1, length2):
             dummy = ListNode()
@@ -32,20 +32,14 @@ class Solution:
 
             return dummy.next
 
-        def merge_sort(head, length):
-            if length == 1:
-                return head
-
-            half_length = length // 2
-            second_head = head
-            for _ in range(half_length):
-                second_head = second_head.next
-
-            first_head_sorted = merge_sort(head, half_length)
-            second_head_sorted = merge_sort(second_head, length - half_length)
-            return merge(
-                first_head_sorted, second_head_sorted, half_length, length - half_length
-            )
+        def skip_nodes(start_node, n):
+            count = 0
+            for _ in range(n):
+                if start_node is None:
+                    return None, count
+                count += 1
+                start_node = start_node.next
+            return start_node, count
 
         node = head
         length = 0
@@ -53,4 +47,20 @@ class Solution:
             length += 1
             node = node.next
 
-        return merge_sort(head, length)
+        sorted_length = 1
+        dummy = ListNode()
+        dummy.next = head
+        prev_merged_tail = dummy
+        while sorted_length < length:
+            prev_merged_tail = dummy
+            next_head = dummy.next
+            while next_head is not None:
+                first_head = next_head
+                second_head, length1 = skip_nodes(first_head, sorted_length)
+                next_head, length2 = skip_nodes(second_head, sorted_length)
+                prev_merged_tail.next = merge(first_head, second_head, length1, length2)
+                prev_merged_tail, _ = skip_nodes(prev_merged_tail, length1 + length2)
+            sorted_length *= 2
+        prev_merged_tail.next = None
+
+        return dummy.next
