@@ -44,3 +44,9 @@ https://github.com/Kitaken0107/GrindEasy/pull/23
 > 文字列に変換しないでやってみてください。ビット操作の問題だと思います。
 
 > 32 bit 整数って、シフト演算をして、最下位ビットを見ると、スタックみたいなものじゃないですか。
+
+---
+以下を追加
+- builtin (c++)
+- divide and conquer
+- 配列を前計算しておく
