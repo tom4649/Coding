@@ -1,3 +1,10 @@
+from enum import IntEnum
+
+class CourseStatus(IntEnum):
+    NOT_VISITED = 0
+    VISITING = 1
+    VISITED = 2
+
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
         next_courses = [[] for _ in range(numCourses)]
@@ -5,29 +12,28 @@ class Solution:
             next_courses[first].append(second)
 
         order = []
-        # 0: 未訪問, 1: 訪問中, 2: 訪問ずみ
-        status = [0] * numCourses
+        status = [CourseStatus.NOT_VISITED] * numCourses
 
-        def dfs(course):
-            if status[course] == 1:
+        def visit_course(course):
+            if status[course] == CourseStatus.VISITING:
                 return False
-            if status[course] == 2:
+            if status[course] == CourseStatus.VISITED:
                 return True
 
-            status[course] = 1
+            status[course] = CourseStatus.VISITING
             for next_course in next_courses[course]:
-                can_be_finished = dfs(next_course)
+                can_be_finished = visit_course(next_course)
                 if not can_be_finished:
                     return False
 
-            status[course] = 2
+            status[course] = CourseStatus.VISITED
             order.append(course)
             return True
 
         for course in range(numCourses):
-            if status[course] != 0:
+            if status[course] != CourseStatus.NOT_VISITED:
                 continue
-            can_be_finished = dfs(course)
+            can_be_finished = visit_course(course)
             if not can_be_finished:
                 return []
 
