@@ -1,5 +1,5 @@
 class Solution:
-    def countBits(self, n: int) -> List[int]:
+    def countBits(self, n: int) -> list[int]:
         if n == 0:
             return [0]
 
