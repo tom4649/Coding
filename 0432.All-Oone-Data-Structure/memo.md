@@ -9,3 +9,13 @@
 
 ## step3
 一度だけ書き直す
+
+## 追加
+
+step1_dict_and_key.py, step1_dict_and_key_unified.pyを追加
+
+step1_dict_and_key.pyが複雑になったのでstep1_dict_and_key_unified.pyでまとめた
+
+計算量: カウントの種類をKとしてincとdecで最悪O(K)
+
+
