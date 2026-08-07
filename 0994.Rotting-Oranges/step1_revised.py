@@ -21,25 +21,22 @@ class Solution:
                     yield (next_row, next_col)
 
         fresh = set()
-        rotten = []
+        rotten_queue = []
         for row, col in itertools.product(range(num_row), range(num_col)):
             if grid[row][col] == ROTTEN:
-                rotten.append((row, col))
+                rotten_queue.append((row, col))
             elif grid[row][col] == FRESH:
                 fresh.add((row, col))
 
         elapsed = 0
-        while fresh and rotten:
+        while fresh and rotten_queue:
             next_rotten = []
-            for row, col in rotten:
+            for row, col in rotten_queue:
                 for next_row, next_col in generate_adjacent_to(row, col):
-                    if (
-                        grid[next_row][next_col] == FRESH
-                        and (next_row, next_col) in fresh
-                    ):
+                    if (next_row, next_col) in fresh:
                         fresh.remove((next_row, next_col))
                         next_rotten.append((next_row, next_col))
             elapsed += 1
-            rotten = next_rotten
+            rotten_queue = next_rotten
 
         return elapsed if not fresh else -1
