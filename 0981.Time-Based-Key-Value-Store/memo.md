@@ -7,9 +7,9 @@
 
 bisect_leftとbisect_rightで迷った
 
-index = bisect_left() -> timestamps[index] >= timestamp, timestamps[index - 1] < timestam
+index = bisect_left() -> timestamps[index] >= timestamp, timestamps[index - 1] < timestamp
 
-index = bisect_right() -> timestamps[index] > timestamp, timestamps[index-1] <= timestamp
+index = bisect_right() -> timestamps[index] > timestamp, timestamps[index - 1] <= timestamp
 
 ## step2
 
