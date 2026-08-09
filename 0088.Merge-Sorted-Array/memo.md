@@ -20,7 +20,7 @@ https://github.com/sota009/swe-coding-practice/pull/1
 
 > "In many ways the object returned by range() behaves as if it is a list, but in fact it isn't. It is an object which returns the successive items of the desired sequence when you iterate over it, but it doesn't really make the list, thus saving space." https://docs.python.org/3/tutorial/controlflow.html
 
-> スペースは食わないみたい
+スペースは食わないみたい
 
 ## step3
 今回は省略
