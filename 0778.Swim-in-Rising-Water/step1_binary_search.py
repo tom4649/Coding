@@ -31,7 +31,7 @@ class Solution:
 
 
         left = 0
-        right = n * n
+        right = n * n - 1
         while left < right:
             mid = (left + right) // 2
             if not can_reach_within(mid):
