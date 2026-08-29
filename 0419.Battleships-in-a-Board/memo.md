@@ -18,4 +18,4 @@ BFSで解く。15m程度。O(nm)。
 https://leetcode.com/problems/battleships-in-a-board/solutions/90912/python-solution-by-simkieu-w0ia/?envType=problem-list-v2&envId=7p55wqm
 
 ## step3
-TODO
+
