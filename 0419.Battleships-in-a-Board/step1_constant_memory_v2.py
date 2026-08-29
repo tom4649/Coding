@@ -5,13 +5,13 @@ class Solution:
         m = len(board[0])
         num_battleships = 0
 
-        for i in range(n):
-            for j in range(m):
-                if board[i][j] != "X":
+        for r in range(n):
+            for c in range(m):
+                if board[r][c] != "X":
                     continue
-                if i > 0 and board[i - 1][j] == "X":
+                if r > 0 and board[r - 1][c] == "X":
                     continue
-                if j > 0 and board[i][j - 1] == "X":
+                if c > 0 and board[r][c - 1] == "X":
                     continue
 
                 num_battleships += 1
