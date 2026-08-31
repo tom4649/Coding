@@ -16,6 +16,6 @@ class Solution:
         for k in range(n):
             for i in range(n):
                 for j in range(n):
-                    reachable[i][j] = reachable[i][j] or (reachable[i][k] and reachable[k][j])
+                    reachable[i][j] |= reachable[i][k] and reachable[k][j]
 
         return max(sum(reachable[i]) for i in range(n))
