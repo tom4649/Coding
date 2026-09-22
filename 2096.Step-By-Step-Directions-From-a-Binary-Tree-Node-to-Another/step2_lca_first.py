@@ -7,7 +7,7 @@
 class Solution:
     def getDirections(self, root: TreeNode | None, startValue: int, destValue: int) -> str:
         def find_lca(node):
-            if not node or node.val == startValue or node.val == destValue:
+            if node is not None or node.val == startValue or node.val == destValue:
                 return node
             left = find_lca(node.left)
             right = find_lca(node.right)
