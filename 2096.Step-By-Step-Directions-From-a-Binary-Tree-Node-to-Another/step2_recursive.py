@@ -28,7 +28,10 @@ class Solution:
                 traverse(node.left)
                 direction.pop()
 
-            if node.right and (direction_s is None or direction_t is None):
+            if direction_s is not None and direction_t is not None:
+                return
+
+            if node.right:
                 direction.append("R")
                 traverse(node.right)
                 direction.pop()
