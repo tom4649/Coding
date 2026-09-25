@@ -9,18 +9,18 @@ class Solution:
             if i == num_books:
                 return 0
 
-            shelf_width = 0
-            shelf_height = 0
+            total_width = 0
+            max_height = 0
             min_total_height = float("inf")
 
             for j in range(i, num_books):
                 width, height = books[j]
-                shelf_width += width
-                if shelf_width > shelfWidth:
+                total_width += width
+                if total_width > shelfWidth:
                     break
 
-                shelf_height = max(shelf_height, height)
-                min_total_height = min(min_total_height, min_height_from(j + 1 ) + shelf_height)
+                max_height = max(max_height, height)
+                min_total_height = min(min_total_height, min_height_from(j + 1 ) + max_height)
 
             return min_total_height
 
