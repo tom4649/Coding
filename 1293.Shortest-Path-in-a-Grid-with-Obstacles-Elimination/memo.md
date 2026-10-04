@@ -56,3 +56,8 @@ set() を使っているがAC。`if k >= m + n - 2: return m + n - 2`が効い�
 
 他の解法はなさそうだが、LLMによるとA-starが使えるかもしれない
 
+## step3
+詰まった点：
+- remaining_kを使い回すと、(next_row, next_col) のループでエラー
+- max_remaining_k の初期化
+- `return steps` は (next_row, next_col) ではなく (row, col) で判定するのがよい。
