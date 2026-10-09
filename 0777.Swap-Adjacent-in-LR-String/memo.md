@@ -17,4 +17,4 @@ https://leetcode.com/problems/swap-adjacent-in-lr-string/solutions/2047353/pytho
 インデックスを全て保存する
 
 ## step3
-TODO
+ループ最後のindex_start += 1, index_result += 1を忘れた
