@@ -2,7 +2,6 @@ class Solution:
     def allPathsSourceTarget(self, graph: list[list[int]]) -> list[list[int]]:
         n = len(graph)
 
-
         all_paths = []
         path = [0]
         frontier = [[0]]
